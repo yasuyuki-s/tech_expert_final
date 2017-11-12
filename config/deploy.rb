@@ -9,7 +9,8 @@ set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', '
 
 set :rbenv_type, :user
 set :rbenv_ruby, '2.3.1'
-
+set :bundle_path, -> { shared_path.join('vendor/bundle') }
+set :bundle_flags, '--deployment'
 set :ssh_options, auth_methods: ['publickey'],
                   keys: ['/Users/yasu/.ssh/ec2_user.pem']
 
