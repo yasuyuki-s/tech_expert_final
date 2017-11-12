@@ -4,6 +4,7 @@
 |Column|Type|Options|
 |------|----|-------|
 |name|string|null: false, index: true, unique: true|
+|nickname|string|null: false, index: true|
 |email|string|null: false, unique: true|
 |biography|text||
 |image_avatar|string||
