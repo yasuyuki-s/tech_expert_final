@@ -1,3 +1,3 @@
 [submodule "app/assets/stylesheets/vendor/csshake"]
-  path = app/assets/stylesheets/vendor/csshake
-  url = https://github.com/elrumordelaluz/csshake.git
+	path = app/assets/stylesheets/vendor/csshake
+	url = https://github.com/elrumordelaluz/csshake.git
