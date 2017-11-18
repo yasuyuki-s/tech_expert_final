@@ -33,6 +33,7 @@ $(function(){
     stack1.push(1); //入力ごとに値を追加する
     var $form = $(this);
     var $sidetip = $form.next("div");
+    $form.attr("data-valid","false");
     $sidetip.children("p").css("display", "none");
     setTimeout(function() {
       stack1.pop();  //中身を一つ取り出す
@@ -46,7 +47,6 @@ $(function(){
 
         if(input == ""){
           $sidetip.find(".blank").css("display", "flex");
-          $form.attr("data-valid","false");
         }else{
           $sidetip.find(".ok").css("display", "flex");
           $form.attr("data-valid","true");
@@ -60,6 +60,7 @@ $(function(){
     stack2.push(1); //入力ごとに値を追加する
     var $form = $(this);
     var $sidetip = $form.next("div");
+    $form.attr("data-valid","false");
     $sidetip.children("p").css("display", "none");
     setTimeout(function() {
       stack2.pop();
@@ -68,10 +69,8 @@ $(function(){
         var input = $form.val();
         if(input == ""){
           $sidetip.find(".blank").css("display", "flex");
-          $form.attr("data-valid","false");
         }else if(!validate_name(input)){
           $sidetip.find(".invalid").css("display", "flex");
-          $form.attr("data-valid","false");
         }else{
           $sidetip.find(".ok").css("display", "flex");
           $form.attr("data-valid","true");
@@ -85,6 +84,7 @@ $(function(){
     stack3.push(1);
     var $form = $(this);
     var $sidetip = $form.next("div");
+    $form.attr("data-valid","false");
     $sidetip.children("p").css("display", "none");
     setTimeout(function() {
       stack3.pop();
@@ -93,10 +93,8 @@ $(function(){
         var input = $form.val();
         if(input == ""){
           $sidetip.find(".blank").css("display", "flex");
-          $form.attr("data-valid","false");
         }else if(!validate_address(input)){
           $sidetip.find(".invalid").css("display", "flex");
-          $form.attr("data-valid","false");
         }else{
           $sidetip.find(".ok").css("display", "flex");
           $form.attr("data-valid","true");
@@ -110,6 +108,7 @@ $(function(){
     stack4.push(1);
     var $form = $(this);
     var $sidetip = $form.next("div");
+    $form.attr("data-valid","false");
     $sidetip.children("p").css("display", "none");
     setTimeout(function() {
       stack4.pop();
@@ -118,7 +117,6 @@ $(function(){
         var input = $form.val();
         if(input.length < 6){
           $sidetip.find(".invalid").css("display", "flex");
-          $form.attr("data-valid","false");
         }else{
           $sidetip.find(".ok").css("display", "flex");
           $form.attr("data-valid","true");
