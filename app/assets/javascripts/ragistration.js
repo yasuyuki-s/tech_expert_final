@@ -11,7 +11,11 @@ $(function(){
   };
 
   function validate_name(name){
-    return name.match(/[A-Za-z0-9]+/);
+    if(name.match(/[^A-Za-z0-9]+/)){
+      return false;
+    }else{
+      return true;
+    };
   };
 
   function submit_failed($element){
