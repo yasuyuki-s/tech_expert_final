@@ -1,0 +1,53 @@
+.pull-right{
+  float: right;
+  text-align: left;
+}
+.emphasize{
+  font-weight: bold;
+}
+body{
+  -webkit-font-smoothing: antialiased;
+}
+small{
+  font-size: 12px;
+}
+
+input{
+    display: inline-block;
+    background-color: $color-textarea-bg;
+    border: 1px solid $color-textarea-border;
+    border-radius: 3px;
+    &::-webkit-input-placeholder{
+      color: $color-textarea-placeholder;
+    }
+    &:focus{
+      outline: 0;
+      border-color: rgba($color-textarea-border-focus,0.5);
+    }
+}
+
+.EdgeButton{
+  width: 100%;
+  border-radius: 100px;
+  box-shadow: none;
+  font-weight: bold;
+  text-align: center;
+  white-space: nowrap;
+  &--large{
+    font-size: 18px;
+    line-height: 24px;
+    padding: 12px 20px;
+  }
+  &--primary{
+    background-color: $color-EdgeButton-bg;
+    border: 1px solid $color-EdgeButton-bg;
+    color: $color-EdgeButton-font;
+    &:hover{
+      cursor: pointer;
+      background-color: $color-EdgeButton-bg-focus;
+      transition: background .2s linear;
+    }
+  }
+
+
+}

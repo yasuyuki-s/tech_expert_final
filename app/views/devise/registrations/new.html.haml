@@ -1,21 +1,32 @@
-%h2 Sign up
-= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
-  = devise_error_messages!
-  .field
-    = f.label :email
-    %br/
-    = f.email_field :email, autofocus: true
-  .field
-    = f.label :password
-    - if @minimum_password_length
-      %em
-        (#{@minimum_password_length} characters minimum)
-    %br/
-    = f.password_field :password, autocomplete: "off"
-  .field
-    = f.label :password_confirmation
-    %br/
-    = f.password_field :password_confirmation, autocomplete: "off"
-  .actions
-    = f.submit "Sign up"
-= render "devise/shared/links"
+.global-nav.global-nav--newLoggedOut
+  .container
+    .global-nav-home
+      %i.fa.fa-twitter
+    .pull-right.nav-extras
+      %ul.session-dropdown
+        %li.dropdown
+          %a.dropdown-toggle.dropdown-signin{href: ""}
+            %small アカウントをお持ちの場合
+            %span.emphasize ログイン
+            / %i.fa.fa-caret-down
+#page-container
+  .page-canvas
+    .signup-wrapper
+      %h1 Twitterをはじめよう
+      = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+        = devise_error_messages!
+        .textbox
+          .prompt.nickname
+            .field
+              = f.text_field :nickname, autofocus: true, placeholder: "名前（またはニックネーム）"
+          .prompt.name
+            .field
+              = f.text_field :name, placeholder: "ユーザー名"
+          .prompt.email
+            .field
+              = f.email_field :email, placeholder: "メールアドレス"
+          .prompt.password
+            .field
+              = f.password_field :password, autocomplete: "off", placeholder: "パスワード"
+        .sign-up-box
+          = f.submit "アカウント作成", class: 'EdgeButton EdgeButton--large EdgeButton--primary'
