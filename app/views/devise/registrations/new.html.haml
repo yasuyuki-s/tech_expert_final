@@ -18,15 +18,52 @@
         .textbox
           .prompt.nickname
             .field
-              = f.text_field :nickname, autofocus: true, placeholder: "名前（またはニックネーム）"
+              = f.text_field :nickname, autofocus: true, placeholder: "名前（またはニックネーム）", data:{valid: "false"}
+              .sidetip
+                %p.ok
+                  %i.fa.fa-check
+                %p.error.blank
+                  %i.fa.fa-times
+                  名前を入力してください。
           .prompt.name
             .field
-              = f.text_field :name, placeholder: "ユーザー名"
+              = f.text_field :name, placeholder: "ユーザー名", data:{valid: "false"}
+              .sidetip
+                %p.ok
+                  %i.fa.fa-check
+                %p.error.blank
+                  %i.fa.fa-times
+                  ユーザー名を入力してください。
+                %p.error.invalid
+                  %i.fa.fa-times
+                  ユーザー名は半角英数字で入力してください。
+                %p.error.taken
+                  %i.fa.fa-times
+                  このユーザー名は既に登録されています。
           .prompt.email
             .field
-              = f.email_field :email, placeholder: "メールアドレス"
+              = f.email_field :email, placeholder: "メールアドレス", data:{valid: "false" }
+              .sidetip
+                %p.ok
+                  %i.fa.fa-check
+                %p.error.blank
+                  %i.fa.fa-times
+                  メールアドレスを入力してください。
+                %p.error.invalid
+                  %i.fa.fa-times
+                  有効なメールアドレスを入力してください。
+                %p.error.taken
+                  %i.fa.fa-times
+                  このメールアドレスは既に登録されています。
           .prompt.password
             .field
-              = f.password_field :password, autocomplete: "off", placeholder: "パスワード"
+              = f.password_field :password, autocomplete: "off", placeholder: "パスワード", data:{valid:"false" }
+              .sidetip
+                %p.ok
+                  %i.fa.fa-check
+                %p.error.invalid
+                  %i.fa.fa-times
+                  パスワードは6文字以上にしてください。
+
         .sign-up-box
-          = f.submit "アカウント作成", class: 'EdgeButton EdgeButton--large EdgeButton--primary'
+          = f.submit "アカウント作成", class: 'EdgeButton EdgeButton--large EdgeButton--primary', id: "sign-up-submit"
