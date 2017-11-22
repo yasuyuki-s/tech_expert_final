@@ -5,8 +5,16 @@
 .emphasize{
   font-weight: bold;
 }
+
+html{
+  height: 100%;
+}
+
 body{
   -webkit-font-smoothing: antialiased;
+  background: $color-body-bg;
+  width: 100%;
+  height: 100%;
 }
 small{
   font-size: 12px;
@@ -26,6 +34,88 @@ input{
     }
 }
 
+.page-outer{
+  width: 100%;
+  height: 100%;
+  position: relative;
+  &-signup{
+    background: $color-signup-bg;
+  }
+  .alert-messages{
+    position: fixed;
+    top: 47px;
+    left: 0;
+    right: 0;
+    z-index: 999;
+    transition: top .5s;
+    .message{
+      position: relative;
+      width: 600px;
+      padding: 20px;
+      margin: 0 auto;
+      background: $color-canvas;
+      border-radius: 0 0 6px 6px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.25);
+      a{
+        font-size: 12px;
+        font-weight: bold;
+        margin-top: 0;
+        color: $color-alert-text;
+        text-decoration: none;
+      }
+      .close{
+        position: absolute;
+        top: 7px;
+        right: 12px;
+        width: 10px;
+        height: 10px;
+        margin-top: 5px;
+        cursor: pointer;
+      }
+      &-text{
+        display: block;
+        margin: 0 20px;
+        color: $color-alert-text;
+        font-size: 14px;
+        line-height: 20px;
+        text-align: center;
+        word-wrap: break-word;
+      }
+    }
+  }
+}
+
+.wrapper{
+    margin: 0 auto;
+    min-height: 0;
+    padding: 56px 23px 15px;
+    position: relative;
+    width: auto;
+    max-width: 837px;
+  &-signup{
+    padding-top: 130px;
+    padding-bottom: 50px;
+    width: 890px;
+  }
+  &-signin{
+    padding: 56px 14px 15px;
+    margin: 0 auto;
+
+  }
+}
+
+.page-canvas{
+  margin: 0 auto;
+  background: $color-canvas;
+  &-signup{
+    width: 500px;
+  }
+  &-signin{
+    box-shadow: 0 0 225px rgba(255,255,255,0.5);
+    border: 1px solid rgba(0,0,0,0.1);
+  }
+}
+
 .EdgeButton{
   width: 100%;
   border-radius: 100px;
@@ -38,6 +128,11 @@ input{
     line-height: 24px;
     padding: 12px 20px;
   }
+  &--medium{
+    font-size: 14px;
+    line-height: 20px;
+    padding: 6px 16px;
+  }
   &--primary{
     background-color: $color-EdgeButton-bg;
     border: 1px solid $color-EdgeButton-bg;
@@ -48,6 +143,12 @@ input{
       transition: background .2s linear;
     }
   }
+}
 
-
+.clearfix{
+  &::after{
+    content: "";
+    clear: both;
+    display: block;
+  }
 }

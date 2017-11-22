@@ -1,17 +1,29 @@
-%h2 Log in
-= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
-  .field
-    = f.label :email
-    %br/
-    = f.email_field :email, autofocus: true
-  .field
-    = f.label :password
-    %br/
-    = f.password_field :password, autocomplete: "off"
-  - if devise_mapping.rememberable?
-    .field
-      = f.check_box :remember_me
-      = f.label :remember_me
-  .actions
-    = f.submit "Log in"
-= render "devise/shared/links"
+.global-nav.global-nav--newLoggedin
+  .container.container--signin
+    %ul.nav
+      %li.global-nav-home
+        %i.fa.fa-twitter
+.page-outer.page-outer
+  - if alert
+    .alert-messages
+      .message
+        %a.close{href: ""}
+          %i.fa.fa-times
+        %span.message-text 入力されたメールアドレスまたはパスワードに誤りがあります。再度お試しください。
+  .page-container.wrapper.wrapper-signin
+    .page-canvas.page-canvas-signin
+      .signin-wrapper
+        %h1 Twitterにログイン
+        = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+          %fieldset
+            .field
+              = f.email_field :email, autofocus: true, placeholder: "メールアドレス"
+            .field
+              = f.password_field :password, autocomplete: "off", placeholder: "パスワード"
+          .clearfix
+            .sign-in-box
+              = f.submit "ログイン", class: 'EdgeButton EdgeButton--medium EdgeButton--primary'
+            .subchck
+              .remember
+                = f.check_box :remember_me, checked: "checked"
+                = f.label :remember_me, value: "保存する"
