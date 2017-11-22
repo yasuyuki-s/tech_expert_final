@@ -54,7 +54,7 @@ $(function(){
 
 
 
-  $("#user_nickname").on("keyup", function(){
+  $(".signup-wrapper").find("#user_nickname").on("keyup", function(){
     stack1.push(1); //入力ごとに値を追加する
     var $form = $(this);
     var $sidetip = $form.next("div");
@@ -81,7 +81,7 @@ $(function(){
     }, delay);
   });
 
-  $("#user_name").on("keyup", function(){
+  $(".signup-wrapper").find("#user_name").on("keyup", function(){
     stack2.push(1); //入力ごとに値を追加する
     var $form = $(this);
     var $sidetip = $form.next("div");
@@ -112,7 +112,7 @@ $(function(){
     }, delay);
   });
 
-  $("#user_email").on("keyup", function(){
+  $(".signup-wrapper").find("#user_email").on("keyup", function(){
     stack3.push(1);
     var $form = $(this);
     var $sidetip = $form.next("div");
@@ -143,7 +143,7 @@ $(function(){
     }, delay);
   });
 
-  $("#user_password").on("keyup", function(){
+  $(".signup-wrapper").find("#user_password").on("keyup", function(){
     stack4.push(1);
     var $form = $(this);
     var $sidetip = $form.next("div");
@@ -165,7 +165,7 @@ $(function(){
     }, delay);
   });
 
-  $("#new_user").submit(function(){
+  $(".signup-wrapper").find("#new_user").submit(function(){
     if($("#user_nickname").attr("data-valid") == "false"){
       submit_failed($("#user_nickname"));
       return false;
