@@ -1,8 +1,9 @@
 .global-nav.global-nav--newLoggedin
   .container.container--signin
-    %ul.nav
+    %ul.nav--global-actions
       %li.global-nav-home
-        %i.fa.fa-twitter
+        = link_to root_path, data: { turbolinks: false } do
+          %i.fa.fa-twitter
 .page-outer.page-outer
   - if alert == "Invalid Email or password."
     .alert-messages
