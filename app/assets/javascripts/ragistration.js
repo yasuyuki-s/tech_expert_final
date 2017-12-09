@@ -98,7 +98,6 @@ $(function(){
           $sidetip.find(".invalid").css("display", "flex");
         }else{
           check_name(input).then(function(data){
-            console.log(data.hit);
             if(data.hit){
               $sidetip.find(".taken").css("display", "flex");
             }else{
@@ -129,7 +128,6 @@ $(function(){
           $sidetip.find(".invalid").css("display", "flex");
         }else{
           check_email(input).then(function(data){
-            console.log(data.hit);
             if(data.hit){
               $sidetip.find(".taken").css("display", "flex");
             }else{
