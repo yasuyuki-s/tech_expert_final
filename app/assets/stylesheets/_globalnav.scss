@@ -58,6 +58,9 @@
   .nav{
     &--global-actions{
       float: left;
+      #global-nav-home{
+        padding: 0;
+      }
       li{
         display: block;
         font-size: 13px;
@@ -123,7 +126,7 @@
     }
   }
   .dropdown-menu{
-    display: block;
+    display: none;
     left: auto;
     right: calc(50% - 10px - 9px);
     top: calc(100%  - 5px);
