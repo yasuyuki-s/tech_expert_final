@@ -1,4 +1,4 @@
-$(function(){
+$(document).on('turbolinks:load',function(){
   over_flg = false;
   $(".dropdown-toggle").on("click",function(e){
     e.preventDefault();

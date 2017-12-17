@@ -1,4 +1,4 @@
-$(function(){
+$(document).on('turbolinks:load',function(){
   var stack1 = [];
   var stack2 = [];
   var stack3 = [];
