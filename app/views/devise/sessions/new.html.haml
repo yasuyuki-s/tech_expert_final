@@ -2,7 +2,7 @@
   .container.container--signin
     %ul.nav--global-actions
       %li.global-nav-home
-        = link_to root_path, data: { turbolinks: false } do
+        = link_to root_path do
           %i.fa.fa-twitter
 .page-outer.page-outer
   - if alert == "Invalid Email or password."
