@@ -36,5 +36,17 @@
                   フォロワー
                 %span.ProfileCardStats-statValue
                   25
+  .content-main.top-timeline-tweetbox
+    .timeline-tweet-box
+      .home-tweet-box
+        = image_tag("default_profile_normal.png",size: "32x32", class: "top-timeline-tweet-box-user-image")
+        %form.t1-form.clearfix
+          .tweet-content
+            .editor-container
+              %textarea.editor{type: "text", placeholder: "いまどうしてる？"}
+          .tweetboxtoolbar
+            .tweetboxtoolbar-tweetButton
+              %button.EdgeButton.EdgeButton--medium.EdgeButton--primary2
+                ツイート
 
 
