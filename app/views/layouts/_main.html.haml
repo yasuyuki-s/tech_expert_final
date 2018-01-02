@@ -48,5 +48,48 @@
             .tweetboxtoolbar-tweetButton
               %button.EdgeButton.EdgeButton--medium.EdgeButton--primary2
                 ツイート
+    .stream-container
+      .stream
+        %ol.stream-items
+          %li.stream-item
+            .tweet.clearfix
+              .content
+                .stream-item-header
+                  %a.account-group{href:""}
+                    = image_tag("default_profile_normal.png",size: "48x48", class: "avatar")
+                    %span.FullnameGroup てすとゆーざー
+                    %span.username @testuser
+                  %span.time 2018年1月2日
+                .tweet-text-container
+                  %p.tweettext
+                    これはてすとついーとです。
+                .stream-item-footer
+          %li.stream-item
+            .tweet.clearfix
+              .content
+                .stream-item-header
+                  %a.account-group{href:""}
+                    = image_tag("default_profile_normal.png",size: "48x48", class: "avatar")
+                    %span.FullnameGroup てすとゆーざー2
+                    %span.username @testuser
+                  %span.time 2018年1月2日
+                .tweet-text-container
+                  %p.tweettext
+                    これはてすとついーとです。これはてすとついーとです。これはてすとついーとです。
+                .stream-item-footer
+          %li.stream-item
+            .tweet.clearfix
+              .content
+                .stream-item-header
+                  %a.account-group{href:""}
+                    = image_tag("default_profile_normal.png",size: "48x48", class: "avatar")
+                    %span.FullnameGroup てすとゆーざー3
+                    %span.username @testuser
+                  %span.time 2018年1月2日
+                .tweet-text-container
+                  %p.tweettext
+                    これはてすとついーとです。これはてすとついーとです。これはてすとついーとです。これはてすとついーとです。これはてすとついーとです。
+                .stream-item-footer
+
 
 

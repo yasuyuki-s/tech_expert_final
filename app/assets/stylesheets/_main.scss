@@ -175,11 +175,74 @@
             &-tweetButton{
               float: right;
               width: 90px;
-
             }
           }
         }
       }
+    }
+  }
+  .stream-container{
+    position: relative;
+    list-style: none;
+    .stream{
+      position : relative;
+      &-items{
+        position: relative;
+        list-style-type: none;
+      }
+      &-item{
+        background: $color-stream-bg;
+        border-left: 1px solid $color-textarea-border;
+        border-right: 1px solid $color-textarea-border;
+        position: relative;
+        .tweet{
+          position: relative;
+          min-height: 51px;
+          padding: 9px 12px;
+          border-bottom: 1px solid $color-textarea-border;
+          cursor: pointer;
+          &:hover{
+            background: $color-stream-bg2;
+          }
+          .content{
+            margin-left: 58px;
+            .stream-item-header{
+              .account-group{
+                color: $color-main-font1;
+                text-decoration: none;
+                margin-right: 5px;
+                &:hover .FullnameGroup{
+                  text-decoration: underline;
+                  color: $color-main-font3;
+                }
+                .avatar{
+                  float: left;
+                  margin-top: 3px;
+                  margin-left: -58px;
+                  position: absolute;
+                  width: 48px;
+                  height: 48px;
+                  border-radius: 50%;
+                }
+                .FullnameGroup{
+                  font-weight: bold;
+                  line-height: 20px;
+                }
+                .username{
+                  color: $color-main-font2;
+                }
+              }
+              .time{
+                color: $color-main-font2;
+              }
+            }
+            .stream-item-footer{
+              height: 30px;
+            }
+          }
+        }
+      }
+
     }
   }
 }
