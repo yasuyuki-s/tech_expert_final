@@ -156,6 +156,26 @@ input{
       border: 1px solid $color-EdgeButton-bg;
     }
   }
+  &--secondary{
+    background-color: $color-EdgeButton-bg3;
+    border: 1px solid $color-EdgeButton-bg2;
+    color: $color-EdgeButton-bg2;
+    &:hover{
+      cursor: pointer;
+      background-color: $color-EdgeButton-bg-focus2;
+      border: 1px solid $color-EdgeButton-bg2;
+    }
+  }
+  &--tertiary{
+    background-color: $color-EdgeButton-bg3;
+    border: 1px solid $color-EdgeButton-font2;
+    color: $color-EdgeButton-font2;
+    &:hover{
+      cursor: pointer;
+      background-color: $color-EdgeButton-bg-focus3;
+      border: 1px solid $color-EdgeButton-font2;
+    }
+  }
 }
 
 .clearfix{
@@ -164,6 +184,10 @@ input{
     clear: both;
     display: block;
   }
+}
+
+.u-bgUserColor{
+  background-color: $color-main-font3;
 }
 
 .u-textUserColor{
@@ -181,8 +205,50 @@ input{
   }
 }
 
+.Grid{
+  height: 100%;
+  text-align: left;
+  &--withGutter{
+    margin: 0 -5px;
+  }
+  &-cell{
+    padding: 0 5px;
+    height: 100%;
+    box-sizing: border-box;
+    display: inline-block;
+    font-size: 14px;
+    margin: 0;
+    text-align: left;
+    vertical-align: top;
+  }
+}
+
+.u-size1of3{
+  width: 33%;
+}
+
+.u-size2of3{
+  width: 66%;
+}
+
+.u-boxShadow{
+  box-shadow: 0 1px 3px 0 rgba(0,0,0,0.25);
+}
+
 .u-block{
   display: block;
+}
+
+.u-floatRight{
+  float: right;
+}
+
+.u-textCenter{
+  text-align: center;
+}
+
+.u-textRight{
+  text-align: right;
 }
 
 .u-inlineBlock{

@@ -36,14 +36,47 @@
         %button.EdgeButton.EdgeButton--medium.EdgeButton--primary2
           ツイート
 .page-outer
-  - if alert == "Invalid Email or password."
-    .alert-messages
-      .message
-        %a.close{href: ""}
-          %i.fa.fa-times
-        %span.message-text 入力されたメールアドレスまたはパスワードに誤りがあります。再度お試しください。
-  .page-container.wrapper.wrapper-signin
-    .page-canvas.page-canvas-signin
-      .signin-wrapper
-        %h1 Twitterにログイン
+  #profile-container.AppContent.clearfix
+    .ProfileCanopy.ProfileCanopy--withnav.ProfileCanopy--large
+      .ProfileCanopy--inner
+        .ProfileCanopy-header.u-bgUserColor
+          .ProfileCanopy-headerBg
+            / %img{src: "https://pbs.twimg.com/profile_banners/14123402/1476590187/1500x500"}
+          .AppContainer
+            .ProfileCanopy-avatar
+              .ProfileAvatar.u-bgUserColor
+                / %img.ProfileAvatar-image{src:"https://pbs.twimg.com/profile_images/906014465631461376/3VTSoffY_400x400.jpg"}
+                / %img.ProfileAvatar-image{src:"https://pbs.twimg.com/profile_images/906014465631461376/3VTSoffY_400x400.jpg"}
+                = image_tag("owner_empty_avatar.png", class: "ProfileAvatar-image")
+        .ProfileCanopy-navbar.u-boxShadow
+          .AppContainer
+            .Grid.Grid--withGutter
+              .Grid-cell.u-size1of3
+              .Grid-cell.u-size2of3
+                .ProfileNav
+                  %ul.ProfileNav-list
+                    %li.ProfileNav-item.ProfileNav-item--tweets.isActive
+                      %a.ProfileNav-stat.u-textCenter{href: ""}
+                        %span.ProfileNav-label ツイート
+                        %span.ProfileNav-value 50
+                    %li.ProfileNav-item.ProfileNav-item--following
+                      %a.ProfileNav-stat.u-textCenter{href: ""}
+                        %span.ProfileNav-label フォロー
+                        %span.ProfileNav-value 100
+                    %li.ProfileNav-item.ProfileNav-item--follower
+                      %a.ProfileNav-stat.u-textCenter{href: ""}
+                        %span.ProfileNav-label フォロワー
+                        %span.ProfileNav-value 1000
+                    %li.ProfileNav-item.ProfileNav-item--userActions.u-floatRight.u-textRight
+                      .UserActions
+                        %button.EdgeButton.EdgeButton--medium.EdgeButton--tertiary
+                          プロフィールを編集
+                        / %button.EdgeButton.EdgeButton--medium.EdgeButton--secondary
+                        /   フォローする
+
+
+
+
+
+
 
