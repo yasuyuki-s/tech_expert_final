@@ -1,19 +1,18 @@
 #page-container.AppContent.clearfix
   .dashboard
     .DashboardProfileCard
-      %a.DashboardProfileCard-bg.u-bgUserColor{href: ""}
+      = link_to "", user_path(current_user), class: "DashboardProfileCard-bg u-bgUserColor"
       .DashboardProfileCard-content
         .DashboardProfileCard-avatarContainer
           .avatar-settings
-            %a.DashboardProfileCard-avatarLink{href:""}
+            = link_to user_path(current_user), class: "DashboardProfileCard-avatarLink" do
               .DashboardProfileCard-avatarImage.u-bgUserColor
                 %i.fa.fa-camera
         .DashboardProfileCard-userFields
           .DashboardProfileCard-name
-            %a.u-textInheritColor{href:""}
-              = current_user.nickname
+            = link_to current_user.nickname, user_path(current_user), class: "u-textInheritColor"
           %span.DashboardProfileCard-screenname.u-inlineBlock
-            %a.DashboardProfileCard-screennameLink{href:""}
+            = link_to user_path(current_user), class: "DashboardProfileCard-screennameLink" do
               %b.username
                 = "@" + current_user.name
         .ProfileCardStats
