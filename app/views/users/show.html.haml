@@ -82,10 +82,9 @@
                 .ProfileSidebar.ProfileSidebar-withLeftAlignment
                   .ProfileHeaderCard
                     %h1.ProfileHeaderCard-name
-                      / = current_user.nickname
-                      Yasu Suga
+                      = @user.nickname
                     %h2.ProfileHeaderCard-screenname.u-inlineBlock
-                      = "@" + current_user.name
+                      = "@" + @user.name
                     %p.ProfileHeaderCard-bio
                       てすとめっせーじだよ。ここにはbioメッセージが表示されます。
           .Grid-cell.u-size2of3

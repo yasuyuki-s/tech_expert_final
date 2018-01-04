@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_action :set_user, only:[:show]
 
   def index
 
@@ -18,6 +19,12 @@ class UsersController < ApplicationController
     respond_to do |format|
       format.json
     end
+  end
+
+  private
+
+  def set_user
+    @user = User.find_by(name: params[:name])
   end
 
 end
