@@ -41,10 +41,12 @@
                         %span.ProfileNav-value 1000
                     %li.ProfileNav-item.ProfileNav-item--userActions.u-floatRight.u-textRight
                       .UserActions
-                        %button.EdgeButton.EdgeButton--medium.EdgeButton--tertiary
-                          プロフィールを編集
-                        / %button.EdgeButton.EdgeButton--medium.EdgeButton--secondary
-                        /   フォローする
+                        - if user_signed_in? && current_user.id == @user.id
+                          %button.EdgeButton.EdgeButton--medium.EdgeButton--tertiary
+                            プロフィールを編集
+                        - else
+                          %button.EdgeButton.EdgeButton--medium.EdgeButton--secondary
+                            フォローする
     .AppContainer
       .AppContent-main
         .Grid.Grid--withGutter
