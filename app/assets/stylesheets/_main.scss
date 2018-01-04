@@ -4,12 +4,75 @@
   width: 100%;
 }
 
+.ProfileSidebar{
+  .ProfileHeaderCard{
+    margin-bottom: 16px;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-top: 35px;
+    &-name{
+      font-size: 21px;
+      line-height: 24px;
+      text-rendering: optimizeLegibility;
+      display: block;
+      font-weight: bold;
+    }
+    &-screenname{
+      color: $color-main-font2;
+      font-size: 14px;
+      line-height: 20px;
+      margin-bottom: 12px;
+    }
+    &-bio{
+      font-size: 14px;
+      font-weight: normal;
+      line-height: 20px;
+      margin-bottom: 12px;
+      word-wrap: break-word;
+    }
+  }
+}
+
+.ProfileHeading{
+  position: relative;
+  width: 100%;
+  z-index: 1;
+  &-spacer{
+    margin-top: 10px;
+  }
+  &-content{
+    width: 100%;
+    background-color: $color-stream-bg;
+    border: 1px solid $color-textarea-border;
+    margin-bottom: -1px;
+  }
+  &-toggleItem{
+    display: inline-block;
+    font-size: 18px;
+    font-weight: bold;
+    line-height: 1;
+    padding: 15px 15px 12px;
+  }
+  .isActive{
+    color: $color-main-font1;
+    cursor: default;
+    font-weight: bold;
+    text-decoration: none;
+  }
+}
+
 .AppContent{
   padding: 56px 14px 15px;
   position: relative;
   width: 890px;
   margin: 0 auto;
   min-height: 0;
+  &-main{
+    float: none;
+    margin: 0;
+    position: relative;
+    width: auto;
+  }
   .ProfileCanopy{
     &--large{
       height: 280px;
@@ -74,80 +137,80 @@
     box-sizing: border-box;
     height: 60px;
     }
-    .AppContainer{
-      height: 100%;
+
+  }
+  .AppContainer{
+    height: 100%;
+    position: relative;
+    margin: 0 auto;
+    max-width: 890px;
+    .ProfileNav{
+      margin-bottom: -1px;
+      height: 60px;
       position: relative;
-      margin: 0 auto;
-      max-width: 890px;
-      .ProfileNav{
-        margin-bottom: -1px;
-        height: 60px;
-        position: relative;
-        &-list{
-          margin: 0;
-          list-style: none;
-          padding: 0;
-        }
-        &-item{
-          display: inline-block;
-          color: $color-globalnav-font3;
-          &--userActions{
-            box-sizing: border-box;
-            height: 59px;
-            padding: 12px 0 0 2px;
-            position: absolute;
-            right: 0;
-            top: 0;
-          }
-        }
-        &-stat{
-          color: inherit;
-          &:linked, &:visited{
-            color: inherit;
-          }
-          &:hover{
-            border-bottom-width: 2px;
-            border-bottom-color: $color-main-font3;
-            .ProfileNav-value{
-              color: $color-main-font3;
-            }
-          }
-          text-decoration: none;
-          height: 60px;
+      &-list{
+        margin: 0;
+        list-style: none;
+        padding: 0;
+      }
+      &-item{
+        display: inline-block;
+        color: $color-globalnav-font3;
+        &--userActions{
           box-sizing: border-box;
-          border-bottom: 0 solid;
-          display: block;
-          line-height: 1;
-          padding: 14px 15px 7px;
-          transition: all .15s ease-in-out;
+          height: 59px;
+          padding: 12px 0 0 2px;
+          position: absolute;
+          right: 0;
+          top: 0;
         }
-        &-label{
-          display: block;
-          font-weight: bold;
-          font-size: 12px;
-          letter-spacing: .02em;
-          transition: color .15s ease-in-out;
+      }
+      &-stat{
+        color: inherit;
+        &:linked, &:visited{
+          color: inherit;
         }
-        &-value{
-          display: block;
-          font-size: 18px;
-          font-weight: bold;
-          padding-top: 3px;
-          transition: color .15s ease-in-out;
+        &:hover{
+          border-bottom-width: 2px;
+          border-bottom-color: $color-main-font3;
+          .ProfileNav-value{
+            color: $color-main-font3;
+          }
         }
-        .isActive{
-          a{
-            border-bottom-width: 2px;
-            border-bottom-color: $color-main-font3;
-            .ProfileNav-value{
-              color: $color-main-font3;
-            }
+        text-decoration: none;
+        height: 60px;
+        box-sizing: border-box;
+        border-bottom: 0 solid;
+        display: block;
+        line-height: 1;
+        padding: 14px 15px 7px;
+        transition: all .15s ease-in-out;
+      }
+      &-label{
+        display: block;
+        font-weight: bold;
+        font-size: 12px;
+        letter-spacing: .02em;
+        transition: color .15s ease-in-out;
+      }
+      &-value{
+        display: block;
+        font-size: 18px;
+        font-weight: bold;
+        padding-top: 3px;
+        transition: color .15s ease-in-out;
+      }
+      .isActive{
+        a{
+          border-bottom-width: 2px;
+          border-bottom-color: $color-main-font3;
+          .ProfileNav-value{
+            color: $color-main-font3;
           }
         }
       }
     }
   }
-
   .dashboard{
     float: left;
     width: 290px;
@@ -322,68 +385,69 @@
       }
     }
   }
-  .stream-container{
-    position: relative;
-    list-style: none;
-    .stream{
-      position : relative;
-      &-items{
+}
+
+.stream-container{
+  position: relative;
+  list-style: none;
+  .stream{
+    position : relative;
+    &-items{
+      position: relative;
+      list-style-type: none;
+    }
+    &-item{
+      background: $color-stream-bg;
+      border-left: 1px solid $color-textarea-border;
+      border-right: 1px solid $color-textarea-border;
+      position: relative;
+      .tweet{
         position: relative;
-        list-style-type: none;
-      }
-      &-item{
-        background: $color-stream-bg;
-        border-left: 1px solid $color-textarea-border;
-        border-right: 1px solid $color-textarea-border;
-        position: relative;
-        .tweet{
-          position: relative;
-          min-height: 51px;
-          padding: 9px 12px;
-          border-bottom: 1px solid $color-textarea-border;
-          cursor: pointer;
-          &:hover{
-            background: $color-stream-bg2;
-          }
-          .content{
-            margin-left: 58px;
-            .stream-item-header{
-              .account-group{
-                color: $color-main-font1;
-                text-decoration: none;
-                margin-right: 5px;
-                &:hover .FullnameGroup{
-                  text-decoration: underline;
-                  color: $color-main-font3;
-                }
-                .avatar{
-                  float: left;
-                  margin-top: 3px;
-                  margin-left: -58px;
-                  position: absolute;
-                  width: 48px;
-                  height: 48px;
-                  border-radius: 50%;
-                }
-                .FullnameGroup{
-                  font-weight: bold;
-                  line-height: 20px;
-                }
-                .username{
-                  color: $color-main-font2;
-                }
+        min-height: 51px;
+        padding: 9px 12px;
+        border-bottom: 1px solid $color-textarea-border;
+        cursor: pointer;
+        &:hover{
+          background: $color-stream-bg2;
+        }
+        .content{
+          margin-left: 58px;
+          .stream-item-header{
+            .account-group{
+              color: $color-main-font1;
+              text-decoration: none;
+              margin-right: 5px;
+              &:hover .FullnameGroup{
+                text-decoration: underline;
+                color: $color-main-font3;
               }
-              .time{
+              .avatar{
+                float: left;
+                margin-top: 3px;
+                margin-left: -58px;
+                position: absolute;
+                width: 48px;
+                height: 48px;
+                border-radius: 50%;
+              }
+              .FullnameGroup{
+                font-weight: bold;
+                line-height: 20px;
+              }
+              .username{
                 color: $color-main-font2;
               }
             }
-            .stream-item-footer{
-              height: 30px;
+            .time{
+              color: $color-main-font2;
             }
+          }
+          .stream-item-footer{
+            height: 30px;
           }
         }
       }
-
     }
+
   }
 }

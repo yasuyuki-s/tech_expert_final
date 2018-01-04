@@ -73,6 +73,102 @@
                           プロフィールを編集
                         / %button.EdgeButton.EdgeButton--medium.EdgeButton--secondary
                         /   フォローする
+    .AppContainer
+      .AppContent-main
+        .Grid.Grid--withGutter
+          .Grid-cell.u-size1of3
+            .Grid.Grid--withGutter
+              .Grid-cell
+                .ProfileSidebar.ProfileSidebar-withLeftAlignment
+                  .ProfileHeaderCard
+                    %h1.ProfileHeaderCard-name
+                      / = current_user.nickname
+                      Yasu Suga
+                    %h2.ProfileHeaderCard-screenname.u-inlineBlock
+                      = "@" + current_user.name
+                    %p.ProfileHeaderCard-bio
+                      てすとめっせーじだよ。ここにはbioメッセージが表示されます。
+          .Grid-cell.u-size2of3
+            .Grid.Grid--withGutter
+              .Grid-cell
+                .ProfileHeading
+                  .ProfileHeading-spacer
+                  .ProfileHeading-content
+                    %ul.ProfileHeading-toggle
+                      %li.ProfileHeading-toggleItem.is-active
+                        %span ツイート
+                .ProfileTimeline#timeline
+                  .stream-container
+                    .stream
+                      %ol.stream-items
+                        %li.stream-item
+                          .tweet.clearfix
+                            .content
+                              .stream-item-header
+                                %a.account-group{href:""}
+                                  = image_tag("default_profile_normal.png",size: "48x48", class: "avatar")
+                                  %span.FullnameGroup てすとゆーざー
+                                  %span.username @testuser
+                                %span.time 2018年1月2日
+                              .tweet-text-container
+                                %p.tweettext
+                                  これはてすとついーとです。
+                              .stream-item-footer
+                        %li.stream-item
+                          .tweet.clearfix
+                            .content
+                              .stream-item-header
+                                %a.account-group{href:""}
+                                  = image_tag("default_profile_normal.png",size: "48x48", class: "avatar")
+                                  %span.FullnameGroup てすとゆーざー2
+                                  %span.username @testuser
+                                %span.time 2018年1月2日
+                              .tweet-text-container
+                                %p.tweettext
+                                  これはてすとついーとです。これはてすとついーとです。これはてすとついーとです。
+                              .stream-item-footer
+                        %li.stream-item
+                          .tweet.clearfix
+                            .content
+                              .stream-item-header
+                                %a.account-group{href:""}
+                                  = image_tag("default_profile_normal.png",size: "48x48", class: "avatar")
+                                  %span.FullnameGroup てすとゆーざー3
+                                  %span.username @testuser
+                                %span.time 2018年1月2日
+                              .tweet-text-container
+                                %p.tweettext
+                                  これはてすとついーとです。これはてすとついーとです。これはてすとついーとです。これはてすとついーとです。これはてすとついーとです。
+                              .stream-item-footer
+                        %li.stream-item
+                          .tweet.clearfix
+                            .content
+                              .stream-item-header
+                                %a.account-group{href:""}
+                                  = image_tag("default_profile_normal.png",size: "48x48", class: "avatar")
+                                  %span.FullnameGroup てすとゆーざー3
+                                  %span.username @testuser
+                                %span.time 2018年1月2日
+                              .tweet-text-container
+                                %p.tweettext
+                                  これはてすとついーとです。これはてすとついーとです。これはてすとついーとです。これはてすとついーとです。これはてすとついーとです。
+                              .stream-item-footer
+                        %li.stream-item
+                          .tweet.clearfix
+                            .content
+                              .stream-item-header
+                                %a.account-group{href:""}
+                                  = image_tag("default_profile_normal.png",size: "48x48", class: "avatar")
+                                  %span.FullnameGroup てすとゆーざー3
+                                  %span.username @testuser
+                                %span.time 2018年1月2日
+                              .tweet-text-container
+                                %p.tweettext
+                                  これはてすとついーとです。これはてすとついーとです。これはてすとついーとです。これはてすとついーとです。これはてすとついーとです。
+                              .stream-item-footer
+
+
+
 
 
 
