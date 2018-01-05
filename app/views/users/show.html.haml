@@ -9,6 +9,13 @@
           %span.text ホーム
     = render "layouts/topbar_right_items"
 .page-outer
+  -if @user.errors.any?
+    .alert-messages
+      .message
+        %a.close{href: ""}
+          %i.fa.fa-times
+        - @user.errors.full_messages.each do |msg|
+          %span.message-text= msg
   #profile-container.AppContent.clearfix
     .ProfilePage-editingOverlay
     = form_for(@user) do |f|

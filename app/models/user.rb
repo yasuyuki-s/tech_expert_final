@@ -3,7 +3,8 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
-  validates :name, uniqueness: true
+  validates :name, uniqueness: true, presence: true
+  validates :nickname, presence: true
 
   def to_param
     name
