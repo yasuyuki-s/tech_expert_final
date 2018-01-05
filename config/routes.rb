@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   devise_for :users
   root 'users#index'
 
-  resources :users, only: [:index,:show] , param: :name do
+  resources :users, only: [:index,:show,:update] , param: :name do
     collection do
       get :check_email
       get :check_name
