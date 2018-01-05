@@ -46,13 +46,13 @@
                       %li.ProfileNav-item.ProfileNav-item--userActions.u-floatRight.u-textRight
                         .UserActions
                           - if user_signed_in? && current_user.id == @user.id
-                            %button.EdgeButton.EdgeButton--medium.EdgeButton--tertiary
+                            %button.EdgeButton.EdgeButton--medium.EdgeButton--tertiary#ProfileEditButton
                               プロフィールを編集
                           - else
                             %button.EdgeButton.EdgeButton--medium.EdgeButton--secondary
                               フォローする
                           .ProfilePage-editingButtons
-                            %button.EdgeButton.EdgeButton--medium.EdgeButton--tertiary
+                            %button.EdgeButton.EdgeButton--medium.EdgeButton--tertiary#ProfileEditCancelButton
                               キャンセル
                             = f.submit "変更を保存", class: 'EdgeButton EdgeButton--medium EdgeButton--secondary'
       .AppContainer
