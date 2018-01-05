@@ -120,7 +120,6 @@ input{
 }
 
 .EdgeButton{
-  width: 100%;
   border-radius: 100px;
   box-shadow: none;
   font-weight: bold;
@@ -188,6 +187,14 @@ input{
 
 .u-bgUserColor{
   background-color: $color-main-font3;
+}
+
+.u-bgColorLightest{
+  background-color: $color-main-tweetbox;
+}
+
+.u-borderUserColorLight{
+  border-color: $color-tweetbox-border;
 }
 
 .u-textUserColor{
