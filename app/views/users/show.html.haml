@@ -1,5 +1,6 @@
 .global-nav
   .container
+    .ProfilePage-editingOverlay
     %i.fa.fa-twitter.center
     %ul.nav--global-actions
       %li#global-nav-home
@@ -9,136 +10,151 @@
     = render "layouts/topbar_right_items"
 .page-outer
   #profile-container.AppContent.clearfix
-    .ProfileCanopy.ProfileCanopy--withnav.ProfileCanopy--large
-      .ProfileCanopy--inner
-        .ProfileCanopy-header.u-bgUserColor
-          .ProfileCanopy-headerBg
-            / %img{src: "https://pbs.twimg.com/profile_banners/14123402/1476590187/1500x500"}
-          .AppContainer
-            .ProfileCanopy-avatar
-              .ProfileAvatar.u-bgUserColor
-                / %img.ProfileAvatar-image{src:"https://pbs.twimg.com/profile_images/906014465631461376/3VTSoffY_400x400.jpg"}
-                / %img.ProfileAvatar-image{src:"https://pbs.twimg.com/profile_images/906014465631461376/3VTSoffY_400x400.jpg"}
-                = image_tag("owner_empty_avatar.png", class: "ProfileAvatar-image")
-        .ProfileCanopy-navbar.u-boxShadow
-          .AppContainer
-            .Grid.Grid--withGutter
-              .Grid-cell.u-size1of3
-              .Grid-cell.u-size2of3
-                .ProfileNav
-                  %ul.ProfileNav-list
-                    %li.ProfileNav-item.ProfileNav-item--tweets.isActive
-                      %a.ProfileNav-stat.u-textCenter{href: ""}
-                        %span.ProfileNav-label ツイート
-                        %span.ProfileNav-value 50
-                    %li.ProfileNav-item.ProfileNav-item--following
-                      %a.ProfileNav-stat.u-textCenter{href: ""}
-                        %span.ProfileNav-label フォロー
-                        %span.ProfileNav-value 100
-                    %li.ProfileNav-item.ProfileNav-item--follower
-                      %a.ProfileNav-stat.u-textCenter{href: ""}
-                        %span.ProfileNav-label フォロワー
-                        %span.ProfileNav-value 1000
-                    %li.ProfileNav-item.ProfileNav-item--userActions.u-floatRight.u-textRight
-                      .UserActions
-                        - if user_signed_in? && current_user.id == @user.id
-                          %button.EdgeButton.EdgeButton--medium.EdgeButton--tertiary
-                            プロフィールを編集
-                        - else
-                          %button.EdgeButton.EdgeButton--medium.EdgeButton--secondary
-                            フォローする
-    .AppContainer
-      .AppContent-main
-        .Grid.Grid--withGutter
-          .Grid-cell.u-size1of3
-            .Grid.Grid--withGutter
-              .Grid-cell
-                .ProfileSidebar.ProfileSidebar-withLeftAlignment
-                  .ProfileHeaderCard
-                    %h1.ProfileHeaderCard-name
-                      = @user.nickname
-                    %h2.ProfileHeaderCard-screenname.u-inlineBlock
-                      = "@" + @user.name
-                    %p.ProfileHeaderCard-bio
-                      てすとめっせーじだよ。ここにはbioメッセージが表示されます。
-          .Grid-cell.u-size2of3
-            .Grid.Grid--withGutter
-              .Grid-cell
-                .ProfileHeading
-                  .ProfileHeading-spacer
-                  .ProfileHeading-content
-                    %ul.ProfileHeading-toggle
-                      %li.ProfileHeading-toggleItem.is-active
-                        %span ツイート
-                .ProfileTimeline#timeline
-                  .stream-container
-                    .stream
-                      %ol.stream-items
-                        %li.stream-item
-                          .tweet.clearfix
-                            .content
-                              .stream-item-header
-                                %a.account-group{href:""}
-                                  = image_tag("default_profile_normal.png",size: "48x48", class: "avatar")
-                                  %span.FullnameGroup てすとゆーざー
-                                  %span.username @testuser
-                                %span.time 2018年1月2日
-                              .tweet-text-container
-                                %p.tweettext
-                                  これはてすとついーとです。
-                              .stream-item-footer
-                        %li.stream-item
-                          .tweet.clearfix
-                            .content
-                              .stream-item-header
-                                %a.account-group{href:""}
-                                  = image_tag("default_profile_normal.png",size: "48x48", class: "avatar")
-                                  %span.FullnameGroup てすとゆーざー2
-                                  %span.username @testuser
-                                %span.time 2018年1月2日
-                              .tweet-text-container
-                                %p.tweettext
-                                  これはてすとついーとです。これはてすとついーとです。これはてすとついーとです。
-                              .stream-item-footer
-                        %li.stream-item
-                          .tweet.clearfix
-                            .content
-                              .stream-item-header
-                                %a.account-group{href:""}
-                                  = image_tag("default_profile_normal.png",size: "48x48", class: "avatar")
-                                  %span.FullnameGroup てすとゆーざー3
-                                  %span.username @testuser
-                                %span.time 2018年1月2日
-                              .tweet-text-container
-                                %p.tweettext
-                                  これはてすとついーとです。これはてすとついーとです。これはてすとついーとです。これはてすとついーとです。これはてすとついーとです。
-                              .stream-item-footer
-                        %li.stream-item
-                          .tweet.clearfix
-                            .content
-                              .stream-item-header
-                                %a.account-group{href:""}
-                                  = image_tag("default_profile_normal.png",size: "48x48", class: "avatar")
-                                  %span.FullnameGroup てすとゆーざー3
-                                  %span.username @testuser
-                                %span.time 2018年1月2日
-                              .tweet-text-container
-                                %p.tweettext
-                                  これはてすとついーとです。これはてすとついーとです。これはてすとついーとです。これはてすとついーとです。これはてすとついーとです。
-                              .stream-item-footer
-                        %li.stream-item
-                          .tweet.clearfix
-                            .content
-                              .stream-item-header
-                                %a.account-group{href:""}
-                                  = image_tag("default_profile_normal.png",size: "48x48", class: "avatar")
-                                  %span.FullnameGroup てすとゆーざー3
-                                  %span.username @testuser
-                                %span.time 2018年1月2日
-                              .tweet-text-container
-                                %p.tweettext
-                                  これはてすとついーとです。これはてすとついーとです。これはてすとついーとです。これはてすとついーとです。これはてすとついーとです。
-                              .stream-item-footer
+    .ProfilePage-editingOverlay
+    = form_for(@user) do |f|
+      .ProfileCanopy.ProfileCanopy--withnav.ProfileCanopy--large
+        .ProfileCanopy--inner
+          .ProfileCanopy-header.u-bgUserColor
+            .ProfileCanopy-headerBg
+              / %img{src: "https://pbs.twimg.com/profile_banners/14123402/1476590187/1500x500"}
+            .AppContainer
+              .ProfileCanopy-avatar
+                .ProfileAvatar.u-bgUserColor
+                  / %img.ProfileAvatar-image{src:"https://pbs.twimg.com/profile_images/906014465631461376/3VTSoffY_400x400.jpg"}
+                  / %img.ProfileAvatar-image{src:"https://pbs.twimg.com/profile_images/906014465631461376/3VTSoffY_400x400.jpg"}
+                  = image_tag("owner_empty_avatar.png", class: "ProfileAvatar-image")
+          .ProfileCanopy-navbar.u-boxShadow
+            .ProfilePage-editingOverlay
+            .AppContainer
+              .Grid.Grid--withGutter
+                .Grid-cell.u-size1of3
+                .Grid-cell.u-size2of3
+                  .ProfileNav
+                    %ul.ProfileNav-list
+                      %li.ProfileNav-item.ProfileNav-item--tweets.isActive
+                        %a.ProfileNav-stat.u-textCenter{href: ""}
+                          %span.ProfileNav-label ツイート
+                          %span.ProfileNav-value 50
+                      %li.ProfileNav-item.ProfileNav-item--following
+                        %a.ProfileNav-stat.u-textCenter{href: ""}
+                          %span.ProfileNav-label フォロー
+                          %span.ProfileNav-value 100
+                      %li.ProfileNav-item.ProfileNav-item--follower
+                        %a.ProfileNav-stat.u-textCenter{href: ""}
+                          %span.ProfileNav-label フォロワー
+                          %span.ProfileNav-value 1000
+                      %li.ProfileNav-item.ProfileNav-item--userActions.u-floatRight.u-textRight
+                        .UserActions
+                          - if user_signed_in? && current_user.id == @user.id
+                            %button.EdgeButton.EdgeButton--medium.EdgeButton--tertiary
+                              プロフィールを編集
+                          - else
+                            %button.EdgeButton.EdgeButton--medium.EdgeButton--secondary
+                              フォローする
+                          .ProfilePage-editingButtons
+                            %button.EdgeButton.EdgeButton--medium.EdgeButton--tertiary
+                              キャンセル
+                            = f.submit "変更を保存", class: 'EdgeButton EdgeButton--medium EdgeButton--secondary'
+      .AppContainer
+        .AppContent-main
+          .Grid.Grid--withGutter
+            .Grid-cell.u-size1of3
+              .Grid.Grid--withGutter
+                .Grid-cell
+                  .ProfileSidebar.ProfileSidebar-withLeftAlignment
+                    .ProfileHeaderCard
+                      %h1.ProfileHeaderCard-name
+                        = @user.nickname
+                      %h2.ProfileHeaderCard-screenname.u-inlineBlock
+                        = "@" + @user.name
+                      %p.ProfileHeaderCard-bio
+                        = @user.biography
+                    .ProfileHeaderCardEditing.u-bgColorLightest
+                      .ProfileHeaderCardEditing-name.ProfileHeaderCardEditing-item
+                        = f.text_field :nickname, autofocus: true, class: "ProfileHeaderCardEditing-editableField u-borderUserColorLight", maxlength: "50", placeholder: "名前"
+                      .ProfileHeaderCardEditing-screenname.u-textUserColor
+                        = "@" + @user.name
+                      .ProfileHeaderCardEditing-bio.ProfileHeaderCardEditing-item
+                        = f.text_area :biography, autofocus: true, class: "ProfileHeaderCardEditing-editableField u-borderUserColorLight", placeholder: "自己紹介"
+
+            .Grid-cell.u-size2of3
+              .Grid.Grid--withGutter
+                .Grid-cell
+                  .ProfileHeading
+                    .ProfileHeading-spacer
+                    .ProfileHeading-content
+                      %ul.ProfileHeading-toggle
+                        %li.ProfileHeading-toggleItem.is-active
+                          %span ツイート
+                  .ProfileTimeline#timeline
+                    .stream-container
+                      .stream
+                        %ol.stream-items
+                          %li.stream-item
+                            .tweet.clearfix
+                              .content
+                                .stream-item-header
+                                  %a.account-group{href:""}
+                                    = image_tag("default_profile_normal.png",size: "48x48", class: "avatar")
+                                    %span.FullnameGroup てすとゆーざー
+                                    %span.username @testuser
+                                  %span.time 2018年1月2日
+                                .tweet-text-container
+                                  %p.tweettext
+                                    これはてすとついーとです。
+                                .stream-item-footer
+                          %li.stream-item
+                            .tweet.clearfix
+                              .content
+                                .stream-item-header
+                                  %a.account-group{href:""}
+                                    = image_tag("default_profile_normal.png",size: "48x48", class: "avatar")
+                                    %span.FullnameGroup てすとゆーざー2
+                                    %span.username @testuser
+                                  %span.time 2018年1月2日
+                                .tweet-text-container
+                                  %p.tweettext
+                                    これはてすとついーとです。これはてすとついーとです。これはてすとついーとです。
+                                .stream-item-footer
+                          %li.stream-item
+                            .tweet.clearfix
+                              .content
+                                .stream-item-header
+                                  %a.account-group{href:""}
+                                    = image_tag("default_profile_normal.png",size: "48x48", class: "avatar")
+                                    %span.FullnameGroup てすとゆーざー3
+                                    %span.username @testuser
+                                  %span.time 2018年1月2日
+                                .tweet-text-container
+                                  %p.tweettext
+                                    これはてすとついーとです。これはてすとついーとです。これはてすとついーとです。これはてすとついーとです。これはてすとついーとです。
+                                .stream-item-footer
+                          %li.stream-item
+                            .tweet.clearfix
+                              .content
+                                .stream-item-header
+                                  %a.account-group{href:""}
+                                    = image_tag("default_profile_normal.png",size: "48x48", class: "avatar")
+                                    %span.FullnameGroup てすとゆーざー3
+                                    %span.username @testuser
+                                  %span.time 2018年1月2日
+                                .tweet-text-container
+                                  %p.tweettext
+                                    これはてすとついーとです。これはてすとついーとです。これはてすとついーとです。これはてすとついーとです。これはてすとついーとです。
+                                .stream-item-footer
+                          %li.stream-item
+                            .tweet.clearfix
+                              .content
+                                .stream-item-header
+                                  %a.account-group{href:""}
+                                    = image_tag("default_profile_normal.png",size: "48x48", class: "avatar")
+                                    %span.FullnameGroup てすとゆーざー3
+                                    %span.username @testuser
+                                  %span.time 2018年1月2日
+                                .tweet-text-container
+                                  %p.tweettext
+                                    これはてすとついーとです。これはてすとついーとです。これはてすとついーとです。これはてすとついーとです。これはてすとついーとです。
+                                .stream-item-footer
 
 
 
