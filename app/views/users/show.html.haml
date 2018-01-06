@@ -27,9 +27,12 @@
             .AppContainer
               .ProfileCanopy-avatar
                 .ProfileAvatar.u-bgUserColor
-                  / %img.ProfileAvatar-image{src:"https://pbs.twimg.com/profile_images/906014465631461376/3VTSoffY_400x400.jpg"}
-                  / %img.ProfileAvatar-image{src:"https://pbs.twimg.com/profile_images/906014465631461376/3VTSoffY_400x400.jpg"}
-                  = image_tag("owner_empty_avatar.png", class: "ProfileAvatar-image")
+                  - if @user.image_avatar.present? then
+                    = image_tag(@user.image_avatar.url, class: "ProfileAvatar-image")
+                  - elsif @user.id == current_user.id then
+                    = image_tag("owner_empty_avatar.png", class: "ProfileAvatar-image")
+                  - else
+                    = image_tag("default_profile_normal.png", class: "ProfileAvatar-image")
                 .ProfileAvatarEditing
                   .ProfileAvatarEditing-placeholder.u-bgUserColor
                   .ProfileAvatarEditing-overlay
@@ -47,7 +50,7 @@
                             %i.fa.fa-caret-up
                         %ul
                           %li#photo-choose-new
-                            = f.file_field :image_avatar
+                            = f.file_field :image_avatar, autocomplete: "false"
                             %button#avatar-choose-button.dropdown-link
                               画像をアップロード
                           %li.dropdown-divider
