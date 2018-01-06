@@ -30,6 +30,30 @@
                   / %img.ProfileAvatar-image{src:"https://pbs.twimg.com/profile_images/906014465631461376/3VTSoffY_400x400.jpg"}
                   / %img.ProfileAvatar-image{src:"https://pbs.twimg.com/profile_images/906014465631461376/3VTSoffY_400x400.jpg"}
                   = image_tag("owner_empty_avatar.png", class: "ProfileAvatar-image")
+                .ProfileAvatarEditing
+                  .ProfileAvatarEditing-placeholder.u-bgUserColor
+                  .ProfileAvatarEditing-overlay
+                  %button.ProfileAvatarEditing-button
+                    .ProfileAvatarEditing-addAvatarHelp
+                      %i.fa.fa-camera
+                      %p プロフィール画像を追加
+                  #choose-photo.dropdown.center
+                    .uploader-image.clearfix
+                      .dropdown-menu#avatar-dropdown-menu
+                        .dropdown-caret
+                          .caret-outer
+                            %i.fa.fa-caret-up
+                          .caret-inner
+                            %i.fa.fa-caret-up
+                        %ul
+                          %li#photo-choose-new
+                            = f.file_field :image_avatar
+                            %button#avatar-choose-button.dropdown-link
+                              画像をアップロード
+                          %li.dropdown-divider
+                          %li#cancel-option
+                            %button#avatar-cancel-button.dropdown-link
+                              キャンセル
           .ProfileCanopy-navbar.u-boxShadow
             .ProfilePage-editingOverlay
             .AppContainer
