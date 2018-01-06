@@ -34,12 +34,19 @@
                   - else
                     = image_tag("default_profile_normal.png", class: "ProfileAvatar-image")
                 .ProfileAvatarEditing
-                  .ProfileAvatarEditing-placeholder.u-bgUserColor
+                  - if current_user.image_avatar.present? then
+                    = image_tag(@user.image_avatar.url, class: "ProfileAvatarEditing-placeholder")
+                  -else
+                    .ProfileAvatarEditing-placeholder.u-bgUserColor
                   .ProfileAvatarEditing-overlay
                   %button.ProfileAvatarEditing-button
                     .ProfileAvatarEditing-addAvatarHelp
-                      %i.fa.fa-camera
-                      %p プロフィール画像を追加
+                      - if current_user.image_avatar.present? then
+                        %i.fa.fa-picture-o
+                        %p プロフィール画像を変更
+                      - else
+                        %i.fa.fa-camera
+                        %p プロフィール画像を追加
                   #choose-photo.dropdown.center
                     .uploader-image.clearfix
                       .dropdown-menu#avatar-dropdown-menu
