@@ -34,10 +34,18 @@ $(document).on('turbolinks:load',function(){
     $(".edit_user").submit();
   });
 
+  $("#avatar-drop-button").on("click",function(e){
+    e.preventDefault();
+    $("#user_remove_image_avatar").prop('checked', true);
+    $(".edit_user").submit();
+  });
+
   $("#avatar-cancel-button").on("click",function(e){
     e.preventDefault();
     $("#avatar-dropdown-menu").toggle();
   });
+
+
 
 
 });

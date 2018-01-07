@@ -60,6 +60,11 @@
                             = f.file_field :image_avatar, autocomplete: "false"
                             %button#avatar-choose-button.dropdown-link
                               画像をアップロード
+                          - if current_user.image_avatar.present? then
+                            %li#photo-choose-new
+                              = f.check_box :remove_image_avatar
+                              %button#avatar-drop-button.dropdown-link
+                                削除
                           %li.dropdown-divider
                           %li#cancel-option
                             %button#avatar-cancel-button.dropdown-link
