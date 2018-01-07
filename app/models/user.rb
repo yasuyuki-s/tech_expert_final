@@ -6,6 +6,8 @@ class User < ApplicationRecord
   validates :name, uniqueness: true, presence: true
   validates :nickname, presence: true
 
+  mount_uploader :image_avatar, ImageUploader
+
   def to_param
     name
   end

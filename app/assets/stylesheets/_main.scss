@@ -189,6 +189,61 @@
           top: 0;
         }
       }
+      .ProfileAvatarEditing{
+        display: none;
+        border-radius: 50%;
+        border: 5px solid $color-canvas;
+        height: 200px;
+        position: relative;
+        width: 200px;
+        .dropdown-menu{
+          top: 125px;
+        }
+        &-placeholder{
+          border-radius: 50%;
+          box-sizing: border-box;
+          height: 100%;
+          left: 0;
+          position: absolute;
+          top: 0;
+          width: 100%;
+        }
+        &-overlay{
+          border-radius: 50%;
+          box-sizing: border-box;
+          height: 100%;
+          left: 0;
+          position: absolute;
+          top: 0;
+          width: 100%;
+          background: #000;
+          opacity: .5;
+        }
+        &-button{
+          background: transparent;
+          border: 0;
+          cursor: pointer;
+          outline: 0;
+          border-radius: 50%;
+          box-sizing: border-box;
+          height: 100%;
+          left: 0;
+          position: absolute;
+          top: 0;
+          width: 100%;
+        }
+        &-addAvatarHelp{
+          color: $color-canvas;
+          font-size: 18px;
+          font-weight: bold;
+          line-height: 24px;
+          padding: 0 12px;
+          text-align: center;
+        }
+        i{
+          font-size: 40px;
+        }
+      }
     }
     &-navbar{
     background-color: $color-canvas;
@@ -443,6 +498,167 @@
       }
     }
   }
+}
+
+.dropdown-menu{
+  display: none;
+  z-index: 900;
+  margin: 2px 0 0;
+  background: $color-textarea-bg;
+  border-radius: 4px;
+  box-shadow: 0 1px 4px rgba($color-globalnav-border,0.25);
+  background-clip: padding-box;
+  .dropdown-caret{
+    position: absolute;
+    top: -10px;
+    left: 12px;
+    width: 24px;
+    height: 18px;
+    float: left;
+    overflow: hidden;
+    .caret-outer{
+      z-index: 900;
+      position: absolute;
+      top: -16px;
+      font-size: 33px;
+      color: rgba($color-globalnav-border,0.1);
+    }
+    .caret-inner{
+      z-index: 901;
+      position: absolute;
+      top: -15px;
+      font-size: 33px;
+      color: $color-textarea-bg;
+    }
+  }
+  li{
+    display: block;
+    float: none;
+    line-height: inherit;
+    position: relative;
+    input{
+      display: none;
+    }
+    .dropdown-link{
+      border: none;
+      font-size: 14px;
+      line-height: 26px;
+      clear: both;
+      color: $color-globalnav-font3;
+      cursor: pointer;
+      display: block;
+      font-size: 14px;
+      font-weight: normal;
+      float: none;
+      line-height: 20px;
+      margin: 0;
+      padding: 5px 20px;
+      position: relative;
+      white-space: nowrap;
+      width: 100%;
+      &:hover{
+        color: $color-EdgeButton-font;
+        background: $color-EdgeButton-bg;
+        text-decoration: none;
+      }
+    }
+    .dropdown-divider{
+      padding-top: 1px;
+      margin: 5px 1px 6px;
+      border-bottom: 1px solid $color-dropdown-divider;
+    }
+  }
+}
+
+.dropdown{
+  position: relative;
+  &.center{
+    float: right;
+    right: 50%;
+    .dropdown-menu{
+      float: right;
+      right: -50%;
+      position: relative;
+      .dropdown-caret{
+        left: calc(50% - 6px);
+        margin-left: -9px;
+      }
+      .dropdown-link{
+        padding: 3px 22px;
+        text-align: center;
+      }
+    }
+  }
+
+  .uploader-image{
+    .dropdown-menu{
+      min-width: 220px;
+      padding: 7px 0 6px 0;
+
+
+      li{
+        position: relative;
+        margin: 0;
+      }
+      li+li{
+        margin: 0;
+      }
+      li a{
+        display: block;
+        font-size: 14px;
+        line-height: 20px;
+        padding: 8px 16px;
+        &:link,&:visited{
+          text-decoration: none;
+          color: $color-dropdown-font1;
+        }
+
+        i{
+          display: inline-block;
+          margin-right: 10px;
+          color: $color-dropdown-font2;
+          font-size: 16px;
+        }
+        &:hover{
+          color: $color-EdgeButton-font;
+          i{
+            color: $color-EdgeButton-font;
+          }
+          background: $color-EdgeButton-bg;
+        }
+      }
+      .DashUserDropdown{
+        &-userInfo{
+          margin: 0;
+          padding-left: 16px;
+          padding-right: 16px;
+          white-space: nowrap;
+          &Link{
+          &:hover{
+            color: $color-dropdown-font1;
+            background: $color-textarea-bg;
+          }
+            padding: 0;
+            .fullname{
+              font-size: 18px;
+              font-weight: bold;
+              line-height: 24px;
+              white-space: nowrap;
+            }
+            p{
+              color: $color-dropdown-font2;
+            }
+          }
+        }
+      }
+      .dropdown-divider{
+        padding-top: 1px;
+        margin: 5px 1px 6px;
+        border-bottom: 1px solid $color-dropdown-divider;
+      }
+    }
+  }
+
 }
 
 .stream-container{

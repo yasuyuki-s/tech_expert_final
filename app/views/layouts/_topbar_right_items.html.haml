@@ -1,8 +1,11 @@
 %ul.nav--right-actions.pull-right
   %li
     %a{href: "/"}
-      = image_tag("default_profile_normal.png",size: "32x32", class: "avatar dropdown-toggle")
-    .dropdown-menu
+      - if current_user.image_avatar.present? then
+        = image_tag(current_user.image_avatar.url,size: "32x32", class: "avatar dropdown-toggle", id: "topbar-dropdown-toggle")
+      - else
+        = image_tag("default_profile_normal.png",size: "32x32", class: "avatar dropdown-toggle", id: "topbar-dropdown-toggle")
+    .dropdown-menu#topbar-dropdown-menu
       .dropdown-caret
         .caret-wrapper
           .caret-outer

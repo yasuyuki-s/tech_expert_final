@@ -27,9 +27,48 @@
             .AppContainer
               .ProfileCanopy-avatar
                 .ProfileAvatar.u-bgUserColor
-                  / %img.ProfileAvatar-image{src:"https://pbs.twimg.com/profile_images/906014465631461376/3VTSoffY_400x400.jpg"}
-                  / %img.ProfileAvatar-image{src:"https://pbs.twimg.com/profile_images/906014465631461376/3VTSoffY_400x400.jpg"}
-                  = image_tag("owner_empty_avatar.png", class: "ProfileAvatar-image")
+                  - if @user.image_avatar.present? then
+                    = image_tag(@user.image_avatar.url, class: "ProfileAvatar-image")
+                  - elsif @user.id == current_user.id then
+                    = image_tag("owner_empty_avatar.png", class: "ProfileAvatar-image")
+                  - else
+                    = image_tag("default_profile_normal.png", class: "ProfileAvatar-image")
+                .ProfileAvatarEditing
+                  - if current_user.image_avatar.present? then
+                    = image_tag(@user.image_avatar.url, class: "ProfileAvatarEditing-placeholder")
+                  -else
+                    .ProfileAvatarEditing-placeholder.u-bgUserColor
+                  .ProfileAvatarEditing-overlay
+                  %button.ProfileAvatarEditing-button
+                    .ProfileAvatarEditing-addAvatarHelp
+                      - if current_user.image_avatar.present? then
+                        %i.fa.fa-picture-o
+                        %p プロフィール画像を変更
+                      - else
+                        %i.fa.fa-camera
+                        %p プロフィール画像を追加
+                  #choose-photo.dropdown.center
+                    .uploader-image.clearfix
+                      .dropdown-menu#avatar-dropdown-menu
+                        .dropdown-caret
+                          .caret-outer
+                            %i.fa.fa-caret-up
+                          .caret-inner
+                            %i.fa.fa-caret-up
+                        %ul
+                          %li#photo-choose-new
+                            = f.file_field :image_avatar, autocomplete: "false"
+                            %button#avatar-choose-button.dropdown-link
+                              画像をアップロード
+                          - if current_user.image_avatar.present? then
+                            %li#photo-choose-new
+                              = f.check_box :remove_image_avatar
+                              %button#avatar-drop-button.dropdown-link
+                                削除
+                          %li.dropdown-divider
+                          %li#cancel-option
+                            %button#avatar-cancel-button.dropdown-link
+                              キャンセル
           .ProfileCanopy-navbar.u-boxShadow
             .ProfilePage-editingOverlay
             .AppContainer

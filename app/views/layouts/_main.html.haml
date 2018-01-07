@@ -6,8 +6,11 @@
         .DashboardProfileCard-avatarContainer
           .avatar-settings
             = link_to user_path(current_user), class: "DashboardProfileCard-avatarLink" do
-              .DashboardProfileCard-avatarImage.u-bgUserColor
-                %i.fa.fa-camera
+              - if current_user.image_avatar.present? then
+                = image_tag(current_user.image_avatar.url, class: "DashboardProfileCard-avatarImage")
+              - else
+                .DashboardProfileCard-avatarImage.u-bgUserColor
+                  %i.fa.fa-camera
         .DashboardProfileCard-userFields
           .DashboardProfileCard-name
             = link_to current_user.nickname, user_path(current_user), class: "u-textInheritColor"
@@ -38,7 +41,10 @@
   .content-main.top-timeline-tweetbox
     .timeline-tweet-box
       .home-tweet-box
-        = image_tag("default_profile_normal.png",size: "32x32", class: "top-timeline-tweet-box-user-image")
+        - if current_user.image_avatar.present? then
+          = image_tag(current_user.image_avatar.url,size: "32x32", class: "top-timeline-tweet-box-user-image")
+        - else
+          = image_tag("default_profile_normal.png",size: "32x32", class: "top-timeline-tweet-box-user-image")
         %form.t1-form.clearfix
           .tweet-content
             .editor-container
