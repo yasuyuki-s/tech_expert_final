@@ -23,7 +23,42 @@
         .ProfileCanopy--inner
           .ProfileCanopy-header.u-bgUserColor
             .ProfileCanopy-headerBg
+              - if @user.image_canopy.present? then
+                = image_tag(@user.image_canopy.url)
               / %img{src: "https://pbs.twimg.com/profile_banners/14123402/1476590187/1500x500"}
+            .ProfileHeaderEditing
+              .ProfileHeaderEditing-overlay
+              %button.ProfileHeaderEditing-button
+                .ProfileHeaderEditing-addHeaderHelp
+                  - if current_user.image_canopy.present? then
+                    %i.fa.fa-picture-o
+                    %p ヘッダー画像を変更する
+                  - else
+                    %i.fa.fa-camera
+                    %p ヘッダー画像を追加する
+              #choose-header-container
+                #choose-header.dropdown.center
+                  .uploader-image.clearfix
+                    .dropdown-menu#header-dropdown-menu
+                      .dropdown-caret
+                        .caret-outer
+                          %i.fa.fa-caret-up
+                        .caret-inner
+                          %i.fa.fa-caret-up
+                      %ul
+                        %li#header-choose-new
+                          = f.file_field :image_canopy, autocomplete: "false"
+                          %button#header-choose-button.dropdown-link
+                            画像をアップロード
+                        - if current_user.image_canopy.present? then
+                          %li#header-choose-new
+                            = f.check_box :remove_image_canopy
+                            %button#header-drop-button.dropdown-link
+                              削除
+                        %li.dropdown-divider
+                        %li#header-cancel-option
+                          %button#header-cancel-button.dropdown-link
+                            キャンセル
             .AppContainer
               .ProfileCanopy-avatar
                 .ProfileAvatar.u-bgUserColor
