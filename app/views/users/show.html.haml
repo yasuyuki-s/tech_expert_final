@@ -168,31 +168,8 @@
                         %li.ProfileHeading-toggleItem.is-active
                           %span ツイート
                   .ProfileTimeline#timeline
-                    .stream-container
-                      .stream
-                        %ol.stream-items
-                          - @tweets.each do |tweet|
-                            %li.stream-item
-                              .tweet.clearfix
-                                .content
-                                  .stream-item-header
-                                    = link_to(user_path(tweet.user), class: "account-group") do
-                                      - if tweet.user.image_avatar.present? then
-                                        = image_tag(tweet.user.image_avatar.url, size: "48x48", class: "avatar")
-                                      - else
-                                        = image_tag("default_profile_normal.png",size: "48x48", class: "avatar")
-                                      %span.FullnameGroup
-                                        = tweet.user.nickname
-                                      %span.username
-                                        = "@" + tweet.user.name
-                                    %span.time
-                                      = l tweet.created_at, format: :default
-                                  .tweet-text-container
-                                    %p.tweettext
-                                      = simple_format(h(tweet.tweet))
-                                  .stream-item-footer
-
-
+                    = render "layouts/tweets_stream"
+= render "layouts/tweetstorm_modal"
 
 
 

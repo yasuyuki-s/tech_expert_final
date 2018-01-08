@@ -1,0 +1,113 @@
+.TweetStormDialog{
+  z-index: 4002;
+  display: none;
+  .modal{
+    width: 610px;
+    top: 5%;
+    left: calc(50% - 305px);
+  }
+}
+
+.modal{
+  margin: 0 0 30px 0;
+  z-index: 6000;
+  position: relative;
+  &-container{
+    background: rgba(0,0,0,0.5);
+    // display: none;
+    position: fixed;
+    overflow: auto;
+    overflow-x: hidden;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+  }
+  &-content{
+    position: relative;
+    background-color: $color-stream-bg;
+    border-radius: 6px;
+    background-clip: padding-box;
+  }
+  &-header{
+    border-bottom: solid 1px $color-tweetbox-border;
+    background: $color-stream-bg;
+    border-radius: 6px 6px 0 0;
+    padding: 12px;
+  }
+  &-title{
+    width: 75%;
+    margin: 0 auto;
+    overflow: hidden;
+    font-size: 18px;
+    font-weight: bold;
+    line-height: 24px;
+    text-align: center;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  &-body{
+    padding: 8px 12px;
+    position: relative;
+    background: $color-main-tweetbox;
+    border-radius: 0 0 6px 6px;
+    .tweet-box-avatar{
+      float: left;
+      overflow: hidden;
+      position: relative;
+      width: 33.75px;
+      img{
+        margin-right: 4px;
+        margin-top: 8px;
+        height: 32px;
+        width: 32px;
+        border-radius: 50%;
+      }
+    }
+    .tweet-box-content{
+      // position: absolute;
+      // top: 0;
+      // left: 50px;
+      float: left;
+      margin: 8px 0 8px 8px;
+      max-width: calc(100% - 33.75px - 12px);
+      width: 100%;
+      .editor-container{
+        border-color: $color-tweetbox-border;
+        box-shadow: 0 0 0 1px $color-tweetbox-border;
+        background: $color-tweetbox-bg;
+        border-radius: 8px;
+        margin-bottom: 8px;
+        z-index: 5;
+        .editor{
+          border: 0;
+          box-sizing: border-box;
+          border-radius: 0;
+          box-shadow: none;
+          font-size: 14px;
+          margin-left: 6px;
+          padding-top: 8px;
+          padding-bottom: 8px;
+          padding-right: 31px;
+          display: block;
+          min-height: 80px;
+          overflow: hidden;
+          vertical-align: top;
+          width: calc(100% - 12px);
+          resize: none;
+          &:focus{
+            outline: none;
+          }
+        }
+      }
+      .tweetboxtoolbar{
+        align-items: center;
+        &-tweetButton{
+          float: right;
+          width: 90px;
+        }
+      }
+    }
+  }
+}
+
