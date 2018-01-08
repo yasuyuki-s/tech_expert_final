@@ -1,10 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only:[:show,:update]
 
-  def index
-
-  end
-
   def show
 
   end
@@ -41,6 +37,7 @@ class UsersController < ApplicationController
 
   def set_user
     @user = User.find_by(name: params[:name])
+    @tweets = @user.tweets.order("created_at DESC")
   end
 
 end

@@ -9,6 +9,8 @@ class User < ApplicationRecord
   mount_uploader :image_avatar, ImageUploader
   mount_uploader :image_canopy, CanopyUploader
 
+  has_many :tweets
+
   def to_param
     name
   end

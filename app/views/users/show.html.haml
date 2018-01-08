@@ -70,7 +70,7 @@
                     = image_tag("default_profile_normal.png", class: "ProfileAvatar-image")
                 .ProfileAvatarEditing
                   - if current_user.image_avatar.present? then
-                    = image_tag(@user.image_avatar.url, class: "ProfileAvatarEditing-placeholder")
+                    = image_tag(current_user.image_avatar.url, class: "ProfileAvatarEditing-placeholder")
                   -else
                     .ProfileAvatarEditing-placeholder.u-bgUserColor
                   .ProfileAvatarEditing-overlay
@@ -115,7 +115,7 @@
                       %li.ProfileNav-item.ProfileNav-item--tweets.isActive
                         %a.ProfileNav-stat.u-textCenter{href: ""}
                           %span.ProfileNav-label ツイート
-                          %span.ProfileNav-value 50
+                          %span.ProfileNav-value= @user.tweets_count
                       %li.ProfileNav-item.ProfileNav-item--following
                         %a.ProfileNav-stat.u-textCenter{href: ""}
                           %span.ProfileNav-label フォロー
@@ -171,72 +171,26 @@
                     .stream-container
                       .stream
                         %ol.stream-items
-                          %li.stream-item
-                            .tweet.clearfix
-                              .content
-                                .stream-item-header
-                                  %a.account-group{href:""}
-                                    = image_tag("default_profile_normal.png",size: "48x48", class: "avatar")
-                                    %span.FullnameGroup てすとゆーざー
-                                    %span.username @testuser
-                                  %span.time 2018年1月2日
-                                .tweet-text-container
-                                  %p.tweettext
-                                    これはてすとついーとです。
-                                .stream-item-footer
-                          %li.stream-item
-                            .tweet.clearfix
-                              .content
-                                .stream-item-header
-                                  %a.account-group{href:""}
-                                    = image_tag("default_profile_normal.png",size: "48x48", class: "avatar")
-                                    %span.FullnameGroup てすとゆーざー2
-                                    %span.username @testuser
-                                  %span.time 2018年1月2日
-                                .tweet-text-container
-                                  %p.tweettext
-                                    これはてすとついーとです。これはてすとついーとです。これはてすとついーとです。
-                                .stream-item-footer
-                          %li.stream-item
-                            .tweet.clearfix
-                              .content
-                                .stream-item-header
-                                  %a.account-group{href:""}
-                                    = image_tag("default_profile_normal.png",size: "48x48", class: "avatar")
-                                    %span.FullnameGroup てすとゆーざー3
-                                    %span.username @testuser
-                                  %span.time 2018年1月2日
-                                .tweet-text-container
-                                  %p.tweettext
-                                    これはてすとついーとです。これはてすとついーとです。これはてすとついーとです。これはてすとついーとです。これはてすとついーとです。
-                                .stream-item-footer
-                          %li.stream-item
-                            .tweet.clearfix
-                              .content
-                                .stream-item-header
-                                  %a.account-group{href:""}
-                                    = image_tag("default_profile_normal.png",size: "48x48", class: "avatar")
-                                    %span.FullnameGroup てすとゆーざー3
-                                    %span.username @testuser
-                                  %span.time 2018年1月2日
-                                .tweet-text-container
-                                  %p.tweettext
-                                    これはてすとついーとです。これはてすとついーとです。これはてすとついーとです。これはてすとついーとです。これはてすとついーとです。
-                                .stream-item-footer
-                          %li.stream-item
-                            .tweet.clearfix
-                              .content
-                                .stream-item-header
-                                  %a.account-group{href:""}
-                                    = image_tag("default_profile_normal.png",size: "48x48", class: "avatar")
-                                    %span.FullnameGroup てすとゆーざー3
-                                    %span.username @testuser
-                                  %span.time 2018年1月2日
-                                .tweet-text-container
-                                  %p.tweettext
-                                    これはてすとついーとです。これはてすとついーとです。これはてすとついーとです。これはてすとついーとです。これはてすとついーとです。
-                                .stream-item-footer
-
+                          - @tweets.each do |tweet|
+                            %li.stream-item
+                              .tweet.clearfix
+                                .content
+                                  .stream-item-header
+                                    = link_to(user_path(tweet.user), class: "account-group") do
+                                      - if tweet.user.image_avatar.present? then
+                                        = image_tag(tweet.user.image_avatar.url, size: "48x48", class: "avatar")
+                                      - else
+                                        = image_tag("default_profile_normal.png",size: "48x48", class: "avatar")
+                                      %span.FullnameGroup
+                                        = tweet.user.nickname
+                                      %span.username
+                                        = "@" + tweet.user.name
+                                    %span.time
+                                      = l tweet.created_at, format: :default
+                                  .tweet-text-container
+                                    %p.tweettext
+                                      = simple_format(h(tweet.tweet))
+                                  .stream-item-footer
 
 
 
