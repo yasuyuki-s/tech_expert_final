@@ -1,7 +1,9 @@
 #page-container.AppContent.clearfix
   .dashboard
     .DashboardProfileCard
-      = link_to "", user_path(current_user), class: "DashboardProfileCard-bg u-bgUserColor"
+      = link_to(user_path(current_user), class: "DashboardProfileCard-bg u-bgUserColor") do
+        - if current_user.image_canopy.present? then
+          = image_tag(current_user.image_canopy.url, size: "288x95")
       .DashboardProfileCard-content
         .DashboardProfileCard-avatarContainer
           .avatar-settings
