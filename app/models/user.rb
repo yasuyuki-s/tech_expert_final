@@ -11,8 +11,25 @@ class User < ApplicationRecord
 
   has_many :tweets
 
+  has_many :follow_active_relationships, class_name: "FollowRelationship", foreign_key: :follow_by_id, dependent: :destroy
+  has_many :follow_passive_relationships, class_name: "FollowRelationship", foreign_key: :follow_to_id, dependent: :destroy
+  has_many :follows, through: :follow_active_relationships, source: :follow_to
+  has_many :followers, through: :follow_passive_relationships, source: :follow_by
+
   def to_param
     name
+  end
+
+  def follow!(other_user)
+    follow_active_relationships.create!(follow_to_id: other_user.id)
+  end
+
+  def unfollow!(other_user)
+    follow_active_relationships.find_by(follow_to_id: other_user.id).destroy
+  end
+
+  def follows?(other_user)
+    follows.include?(other_user)
   end
 
 end
