@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180108074402) do
+ActiveRecord::Schema.define(version: 20180108133908) do
+
+  create_table "follow_relationships", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "follow_by_id", null: false
+    t.integer  "follow_to_id", null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.index ["follow_by_id", "follow_to_id"], name: "index_follow_relationships_on_follow_by_id_and_follow_to_id", unique: true, using: :btree
+    t.index ["follow_to_id"], name: "fk_rails_eee919fa10", using: :btree
+  end
 
   create_table "tweets", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.text     "tweet",      limit: 65535, null: false
@@ -42,5 +51,7 @@ ActiveRecord::Schema.define(version: 20180108074402) do
     t.integer  "tweets_count",                         default: 0,  null: false
   end
 
+  add_foreign_key "follow_relationships", "users", column: "follow_by_id"
+  add_foreign_key "follow_relationships", "users", column: "follow_to_id"
   add_foreign_key "tweets", "users"
 end
