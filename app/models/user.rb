@@ -7,6 +7,7 @@ class User < ApplicationRecord
   validates :nickname, presence: true
 
   mount_uploader :image_avatar, ImageUploader
+  mount_uploader :image_canopy, CanopyUploader
 
   def to_param
     name
