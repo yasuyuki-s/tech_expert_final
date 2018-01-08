@@ -1,0 +1,18 @@
+.TweetStormDialog.modal-container
+  .modal
+    .modal-content
+      .modal-header
+        %h3.modal-title ツイートする
+      .modal-body.clearfix
+        .tweet-box-avatar
+          - if current_user.image_avatar.present? then
+            = image_tag(current_user.image_avatar.url,size: "32x32")
+          - else
+            = image_tag("default_profile_normal.png",size: "32x32")
+        .tweet-box-content.clearfix
+          = form_for(@tweet, html:{class: "clearfix"}) do |f|
+            .editor-container
+              = f.text_area :tweet, autofocus: false, class: "editor", maxlength: "240", placeholder: "いまどうしてる？"
+            .tweetboxtoolbar
+              .tweetboxtoolbar-tweetButton
+                = f.submit "ツイート", class: "EdgeButton EdgeButton--medium EdgeButton--primary2"
