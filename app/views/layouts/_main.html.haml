@@ -83,7 +83,7 @@
                         = l tweet.created_at, format: :default
                     .tweet-text-container
                       %p.tweettext
-                        = tweet.tweet
+                        = simple_format(h(tweet.tweet))
                     .stream-item-footer
 
 
