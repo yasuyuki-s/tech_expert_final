@@ -48,6 +48,24 @@
                     フォロワー
                   %span.ProfileCardStats-statValue
                     25
+      .module
+        .flex-module
+          .flex-module-header
+            %h3 ユーザーリスト
+          .DashboardUserList
+            %ol
+              - User.all.each do |user|
+                %li.DashboardUserList-item
+                  .content
+                    = link_to(user_path(user), class: "account-group", data_user_id: user.id) do
+                      - if user.image_avatar.present? then
+                        = image_tag(user.image_avatar.url, size: "48x48", class: "avatar")
+                      - else
+                        = image_tag("default_profile_normal.png",size: "48x48", class: "avatar")
+                      %span.account-group-inner
+                        %strong.fullname= user.nickname
+                        %span.username= "@" + user.name
+
     .content-main.top-timeline-tweetbox
       .timeline-tweet-box
         .home-tweet-box
