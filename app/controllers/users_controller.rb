@@ -38,6 +38,7 @@ class UsersController < ApplicationController
   def set_user
     @user = User.find_by(name: params[:name])
     @tweets = @user.tweets.order("created_at DESC")
+    @tweet = Tweet.new
   end
 
 end
