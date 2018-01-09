@@ -65,6 +65,15 @@
                       %span.account-group-inner
                         %strong.fullname= user.nickname
                         %span.username= "@" + user.name
+                    - if current_user != user then
+                      .user-actions
+                        %div{ class: current_user.following?(user) ? "following-button-wrapper" : "follow-button-wrapper"}
+                          = form_tag(follow_relationships_path, method: :post, class: "follow-button") do
+                            = hidden_field_tag :follow_to_id, user.id
+                            = submit_tag("フォローする", class: "EdgeButton EdgeButton--secondary EdgeButton--small")
+                          = form_tag(follow_relationships_path, method: :delete, class: "following-button") do
+                            = hidden_field_tag :follow_to_id, user.id
+                            = submit_tag("フォロー中", class: "EdgeButton EdgeButton--primary EdgeButton--small")
 
     .content-main.top-timeline-tweetbox
       .timeline-tweet-box

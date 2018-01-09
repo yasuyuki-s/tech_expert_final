@@ -135,6 +135,11 @@ input{
     line-height: 20px;
     padding: 6px 16px;
   }
+  &--small{
+    font-size: 12px;
+    line-height: 16px;
+    padding: 4px 12px;
+  }
   &--primary{
     background-color: $color-EdgeButton-bg;
     border: 1px solid $color-EdgeButton-bg;
@@ -286,3 +291,20 @@ input{
   }
 }
 
+.follow-button-wrapper{
+  .follow-button{
+    display: block;
+  }
+  .following-button{
+    display: none;
+  }
+}
+
+.following-button-wrapper{
+  .follow-button{
+    display: none;
+  }
+  .following-button{
+    display: block;
+  }
+}
