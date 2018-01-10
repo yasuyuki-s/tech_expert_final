@@ -119,11 +119,11 @@
                       %li.ProfileNav-item.ProfileNav-item--following
                         %a.ProfileNav-stat.u-textCenter{href: ""}
                           %span.ProfileNav-label フォロー
-                          %span.ProfileNav-value 100
+                          %span.ProfileNav-value= @user.follows_count
                       %li.ProfileNav-item.ProfileNav-item--follower
                         %a.ProfileNav-stat.u-textCenter{href: ""}
                           %span.ProfileNav-label フォロワー
-                          %span.ProfileNav-value 1000
+                          %span.ProfileNav-value= @user.followers_count
                       %li.ProfileNav-item.ProfileNav-item--userActions.u-floatRight.u-textRight
                         .UserActions
                           - if user_signed_in? && current_user.id == @user.id
