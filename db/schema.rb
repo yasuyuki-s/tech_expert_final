@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180108133908) do
+ActiveRecord::Schema.define(version: 20180110132651) do
 
   create_table "follow_relationships", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "follow_by_id", null: false
@@ -49,6 +49,8 @@ ActiveRecord::Schema.define(version: 20180108133908) do
     t.datetime "created_at",                                        null: false
     t.datetime "updated_at",                                        null: false
     t.integer  "tweets_count",                         default: 0,  null: false
+    t.integer  "follows_count",                        default: 0,  null: false
+    t.integer  "followers_count",                      default: 0,  null: false
   end
 
   add_foreign_key "follow_relationships", "users", column: "follow_by_id"
