@@ -123,15 +123,22 @@
                       %li.ProfileNav-item.ProfileNav-item--follower
                         %a.ProfileNav-stat.u-textCenter{href: ""}
                           %span.ProfileNav-label フォロワー
-                          %span.ProfileNav-value= @user.followers_count
+                          %span.ProfileNav-value#followers_count= @user.followers_count
                       %li.ProfileNav-item.ProfileNav-item--userActions.u-floatRight.u-textRight
                         .UserActions
                           - if user_signed_in? && current_user.id == @user.id
                             %button.EdgeButton.EdgeButton--medium.EdgeButton--tertiary#ProfileEditButton
                               プロフィールを編集
                           - else
-                            %button.EdgeButton.EdgeButton--medium.EdgeButton--secondary
-                              フォローする
+                            %div{ class: current_user.following?(@user) ? "following-button-wrapper" : "follow-button-wrapper"}
+                              .follow-button
+                                = hidden_field_tag :follow_to_id, @user.id
+                                %button.EdgeButton.EdgeButton--secondary.EdgeButton--medium
+                                  フォローする
+                              .following-button
+                                = hidden_field_tag :follow_to_id, @user.id
+                                %button.EdgeButton.EdgeButton--primary.EdgeButton--medium
+                                  フォロー中
                           .ProfilePage-editingButtons
                             %button.EdgeButton.EdgeButton--medium.EdgeButton--tertiary#ProfileEditCancelButton
                               キャンセル
