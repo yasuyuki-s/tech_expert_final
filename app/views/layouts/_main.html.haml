@@ -31,19 +31,19 @@
           .ProfileCardStats
             %ul.ProfileCardStats-statList.Arrange.Arrange--bottom.Arrange-equal
               %li.ProfileCardStats-stat.Arrange-sizeFit
-                %a.ProfileCardStats-statLink.u-textUserColor.u-linkClean.u-block{href:""}
+                = link_to(user_path(current_user), class: "ProfileCardStats-statLink u-textUserColor u-linkClean u-block") do
                   %span.ProfileCardStats-statLabel.u-block
                     ツイート
                   %span.ProfileCardStats-statValue
                     = current_user.tweets_count
               %li.ProfileCardStats-stat.Arrange-sizeFit
-                %a.ProfileCardStats-statLink.u-textUserColor.u-linkClean.u-block{href:""}
+                = link_to(following_user_path(current_user), class: "ProfileCardStats-statLink u-textUserColor u-linkClean u-block") do
                   %span.ProfileCardStats-statLabel.u-block
                     フォロー
                   %span.ProfileCardStats-statValue#follows_count
                     = current_user.follows_count
               %li.ProfileCardStats-stat.Arrange-sizeFit
-                %a.ProfileCardStats-statLink.u-textUserColor.u-linkClean.u-block{href:""}
+                = link_to(followers_user_path(current_user), class: "ProfileCardStats-statLink u-textUserColor u-linkClean u-block") do
                   %span.ProfileCardStats-statLabel.u-block
                     フォロワー
                   %span.ProfileCardStats-statValue

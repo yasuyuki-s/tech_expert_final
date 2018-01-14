@@ -74,6 +74,7 @@
     &-bio{
       textarea{
         resize: none;
+        height: 5em;
       }
     }
     &-screenname{
@@ -446,8 +447,12 @@
         font-size: 18px;
         line-height: 25px;
         margin: -1px 0 -2px 0;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
         a{
           text-decoration: none;
+
         }
         a:hover{
           text-decoration: underline;
