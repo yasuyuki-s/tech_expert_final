@@ -1,8 +1,16 @@
 class UsersController < ApplicationController
-  before_action :set_user, only:[:show,:update]
+  before_action :set_user, only:[:show, :update, :following, :followers]
 
   def show
 
+  end
+
+  def following
+    @users = User.find_by(name: params[:name]).follows
+  end
+
+  def followers
+    @users = User.find_by(name: params[:name]).followers
   end
 
   def update
