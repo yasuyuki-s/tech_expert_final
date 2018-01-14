@@ -1,0 +1,170 @@
+-if @user.errors.any?
+  .alert-messages
+    .message
+      %a.close{href: ""}
+        %i.fa.fa-times
+      - @user.errors.full_messages.each do |msg|
+        %span.message-text= msg
+#profile-container.AppContent.clearfix
+  .ProfilePage-editingOverlay
+  = form_for(@user) do |f|
+    .ProfileCanopy.ProfileCanopy--withnav.ProfileCanopy--large
+      .ProfileCanopy--inner
+        .ProfileCanopy-header.u-bgUserColor
+          .ProfileCanopy-headerBg
+            - if @user.image_canopy.present? then
+              = image_tag(@user.image_canopy.url)
+          .ProfileHeaderEditing
+            .ProfileHeaderEditing-overlay
+            %button.ProfileHeaderEditing-button
+              .ProfileHeaderEditing-addHeaderHelp
+                - if current_user.image_canopy.present? then
+                  %i.fa.fa-picture-o
+                  %p ヘッダー画像を変更する
+                - else
+                  %i.fa.fa-camera
+                  %p ヘッダー画像を追加する
+            #choose-header-container
+              #choose-header.dropdown.center
+                .uploader-image.clearfix
+                  .dropdown-menu#header-dropdown-menu
+                    .dropdown-caret
+                      .caret-outer
+                        %i.fa.fa-caret-up
+                      .caret-inner
+                        %i.fa.fa-caret-up
+                    %ul
+                      %li#header-choose-new
+                        = f.file_field :image_canopy, autocomplete: "false"
+                        %button#header-choose-button.dropdown-link
+                          画像をアップロード
+                      - if current_user.image_canopy.present? then
+                        %li#header-choose-new
+                          = f.check_box :remove_image_canopy
+                          %button#header-drop-button.dropdown-link
+                            削除
+                      %li.dropdown-divider
+                      %li#header-cancel-option
+                        %button#header-cancel-button.dropdown-link
+                          キャンセル
+          .AppContainer
+            .ProfileCanopy-avatar
+              .ProfileAvatar.u-bgUserColor
+                - if @user.image_avatar.present? then
+                  = image_tag(@user.image_avatar.url, class: "ProfileAvatar-image")
+                - elsif @user.id == current_user.id then
+                  = image_tag("owner_empty_avatar.png", class: "ProfileAvatar-image")
+                - else
+                  = image_tag("default_profile_normal.png", class: "ProfileAvatar-image")
+              .ProfileAvatarEditing
+                - if current_user.image_avatar.present? then
+                  = image_tag(current_user.image_avatar.url, class: "ProfileAvatarEditing-placeholder")
+                -else
+                  .ProfileAvatarEditing-placeholder.u-bgUserColor
+                .ProfileAvatarEditing-overlay
+                %button.ProfileAvatarEditing-button
+                  .ProfileAvatarEditing-addAvatarHelp
+                    - if current_user.image_avatar.present? then
+                      %i.fa.fa-picture-o
+                      %p プロフィール画像を変更
+                    - else
+                      %i.fa.fa-camera
+                      %p プロフィール画像を追加
+                #choose-photo.dropdown.center
+                  .uploader-image.clearfix
+                    .dropdown-menu#avatar-dropdown-menu
+                      .dropdown-caret
+                        .caret-outer
+                          %i.fa.fa-caret-up
+                        .caret-inner
+                          %i.fa.fa-caret-up
+                      %ul
+                        %li#photo-choose-new
+                          = f.file_field :image_avatar, autocomplete: "false"
+                          %button#avatar-choose-button.dropdown-link
+                            画像をアップロード
+                        - if current_user.image_avatar.present? then
+                          %li#photo-choose-new
+                            = f.check_box :remove_image_avatar
+                            %button#avatar-drop-button.dropdown-link
+                              削除
+                        %li.dropdown-divider
+                        %li#cancel-option
+                          %button#avatar-cancel-button.dropdown-link
+                            キャンセル
+        .ProfileCanopy-navbar.u-boxShadow
+          .ProfilePage-editingOverlay
+          .AppContainer
+            .Grid.Grid--withGutter
+              .Grid-cell.u-size1of3
+              .Grid-cell.u-size2of3
+                .ProfileNav
+                  %ul.ProfileNav-list
+                    %li{ class: (page == "tweet") ? "ProfileNav-item ProfileNav-item--tweets isActive" : "ProfileNav-item ProfileNav-item--tweets"}
+                      = link_to(user_path(@user), class: "ProfileNav-stat u-textCenter") do
+                        %span.ProfileNav-label ツイート
+                        %span.ProfileNav-value= @user.tweets_count
+                    %li{ class: (page == "following") ? "ProfileNav-item ProfileNav-item--following isActive" : "ProfileNav-item ProfileNav-item--following"}
+                      = link_to(following_user_path(@user), class: "ProfileNav-stat u-textCenter") do
+                        %span.ProfileNav-label フォロー
+                        %span.ProfileNav-value#follows_count= @user.follows_count
+                    %li{ class: (page == "followers") ? "ProfileNav-item ProfileNav-item--follower isActive" : "ProfileNav-item ProfileNav-item--follower"}
+                      = link_to(followers_user_path(@user), class: "ProfileNav-stat u-textCenter") do
+                        %span.ProfileNav-label フォロワー
+                        %span.ProfileNav-value#followers_count= @user.followers_count
+                    %li.ProfileNav-item.ProfileNav-item--userActions.u-floatRight.u-textRight
+                      .UserActions
+                        - if user_signed_in? && current_user.id == @user.id
+                          %button.EdgeButton.EdgeButton--medium.EdgeButton--tertiary#ProfileEditButton
+                            プロフィールを編集
+                        - else
+                          %div{ class: current_user.following?(@user) ? "following-button-wrapper" : "follow-button-wrapper"}
+                            .follow-button
+                              = hidden_field_tag :follow_to_id, @user.id
+                              %button.EdgeButton.EdgeButton--secondary.EdgeButton--medium.counterpart
+                                フォローする
+                            .following-button
+                              = hidden_field_tag :follow_to_id, @user.id
+                              %button.EdgeButton.EdgeButton--primary.EdgeButton--medium.counterpart
+                                フォロー中
+                        .ProfilePage-editingButtons
+                          %button.EdgeButton.EdgeButton--medium.EdgeButton--tertiary#ProfileEditCancelButton
+                            キャンセル
+                          = f.submit "変更を保存", class: 'EdgeButton EdgeButton--medium EdgeButton--secondary'
+    .AppContainer
+      .AppContent-main
+        .Grid.Grid--withGutter
+          .Grid-cell.u-size1of3
+            .Grid.Grid--withGutter
+              .Grid-cell
+                .ProfileSidebar.ProfileSidebar-withLeftAlignment
+                  .ProfileHeaderCard
+                    %h1.ProfileHeaderCard-name
+                      = @user.nickname
+                    %h2.ProfileHeaderCard-screenname.u-inlineBlock
+                      = "@" + @user.name
+                    %p.ProfileHeaderCard-bio
+                      = @user.biography
+                  .ProfileHeaderCardEditing.u-bgColorLightest
+                    .ProfileHeaderCardEditing-name.ProfileHeaderCardEditing-item
+                      = f.text_field :nickname, autofocus: true, class: "ProfileHeaderCardEditing-editableField u-borderUserColorLight", maxlength: "50", placeholder: "名前"
+                    .ProfileHeaderCardEditing-screenname.u-textUserColor
+                      = "@" + @user.name
+                    .ProfileHeaderCardEditing-bio.ProfileHeaderCardEditing-item
+                      = f.text_area :biography, autofocus: true, class: "ProfileHeaderCardEditing-editableField u-borderUserColorLight", placeholder: "自己紹介"
+
+          .Grid-cell.u-size2of3
+            .Grid.Grid--withGutter
+              .Grid-cell
+                .ProfileHeading
+                  .ProfileHeading-spacer
+                  .ProfileHeading-content
+                    - if page == "tweet" then
+                      %ul.ProfileHeading-toggle
+                        %li.ProfileHeading-toggleItem.is-active
+                          %span ツイート
+                .ProfileTimeline#timeline
+                  - if page == "tweet" then
+                    = render "layouts/tweets_stream"
+                  - else
+                    = render "layouts/mypage_user_list"
