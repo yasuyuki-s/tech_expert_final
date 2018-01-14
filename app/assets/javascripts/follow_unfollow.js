@@ -10,6 +10,7 @@ $(document).on('turbolinks:load',function(){
       dataType: "json"
     })
     .done(function(data){
+      $("#follows_count").text(Number($("#follows_count").text())+ 1);
       parent_wrapper.toggleClass("following-button-wrapper");
       parent_wrapper.toggleClass("follow-button-wrapper");
     })
@@ -28,6 +29,7 @@ $(document).on('turbolinks:load',function(){
       dataType: "json"
     })
     .done(function(data){
+      $("#follows_count").text(Number($("#follows_count").text())- 1);
       parent_wrapper.toggleClass("follow-button-wrapper");
       parent_wrapper.toggleClass("following-button-wrapper");
     })
