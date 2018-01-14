@@ -7,6 +7,10 @@ Rails.application.routes.draw do
       get :check_email
       get :check_name
     end
+    member do
+      get :following
+      get :followers
+    end
   end
 
   resources :tweets, only: [:index,:create]
