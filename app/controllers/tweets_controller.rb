@@ -31,6 +31,6 @@ class TweetsController < ApplicationController
     for i in 1..user_list.length-1
        tweets_sel = tweets_sel.or(tweets[:user_id].eq(user_list[i]))
     end
-    @tweets = Tweet.where(tweets_sel).order("created_at DESC")
+    @tweets = Tweet.where(tweets_sel).includes(:user).order("created_at DESC")
   end
 end
