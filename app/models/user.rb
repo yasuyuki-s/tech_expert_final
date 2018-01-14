@@ -9,7 +9,7 @@ class User < ApplicationRecord
   mount_uploader :image_avatar, ImageUploader
   mount_uploader :image_canopy, CanopyUploader
 
-  has_many :tweets
+  has_many :tweets, dependent: :destroy
 
   has_many :follow_active_relationships, class_name: "FollowRelationship", foreign_key: :follow_by_id, dependent: :destroy
   has_many :follow_passive_relationships, class_name: "FollowRelationship", foreign_key: :follow_to_id, dependent: :destroy
