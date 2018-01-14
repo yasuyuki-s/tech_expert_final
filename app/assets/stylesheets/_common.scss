@@ -245,6 +245,14 @@ input{
   width: 66%;
 }
 
+.u-size1of2{
+  width: 50%;
+}
+
+.u-mb10{
+  margin-bottom: 10px;
+}
+
 .u-boxShadow{
   box-shadow: 0 1px 3px 0 rgba(0,0,0,0.25);
 }
@@ -268,6 +276,14 @@ input{
 .u-inlineBlock{
   display: inline-block;
   max-width: 100%;
+}
+
+.u-textTruncate{
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  word-wrap: normal;
 }
 
 .Arrange{
