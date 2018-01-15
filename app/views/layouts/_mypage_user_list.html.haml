@@ -1,6 +1,6 @@
 .Grid.Grid--withGutter.usercell
   - @users.each do |user|
-    .Grid-cell.u-size1of2.u-mb10
+    .Grid-cell.u-size1of2.u-mb10.u-floatLeft
       .ProfileCard
         = link_to(user_path(user), class: "ProfileCard-bg u-bgUserColor") do
           - if user.image_canopy.present? then
