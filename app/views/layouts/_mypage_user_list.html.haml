@@ -1,0 +1,40 @@
+.Grid.Grid--withGutter.usercell
+  - @users.each do |user|
+    .Grid-cell.u-size1of2.u-mb10.u-floatLeft
+      .ProfileCard
+        = link_to(user_path(user), class: "ProfileCard-bg u-bgUserColor") do
+          - if user.image_canopy.present? then
+            = image_tag(user.image_canopy.url, size: "285x90")
+        .ProfileCard-content
+          = link_to(user_path(user), class: "ProfileCard-avatarLink") do
+            - if user.image_avatar.present? then
+              = image_tag(user.image_avatar.url, size: "70x70", class: "ProfileCard-avatarImage")
+            - else
+              = image_tag("default_profile_normal.png",size: "70x70", class: "ProfileCard-avatarImage")
+          .ProfileCard-actions
+            .UserActions
+              - if user.id != current_user.id then
+                %div{ class: current_user.following?(user) ? "following-button-wrapper" : "follow-button-wrapper"}
+                  .follow-button
+                    = hidden_field_tag :follow_to_id, user.id
+                    %button{ class: (current_user.id == @user.id) ? "EdgeButton EdgeButton--secondary EdgeButton--small" : "EdgeButton EdgeButton--secondary EdgeButton--small third-party"}
+                      フォローする
+                  .following-button
+                    = hidden_field_tag :follow_to_id, user.id
+                    %button{ class: (current_user.id == @user.id) ? "EdgeButton EdgeButton--primary EdgeButton--small" : "EdgeButton EdgeButton--primary EdgeButton--small third-party"}
+                      フォロー中
+          .ProfileCard-userFields
+            .ProfileNameTruncated
+              .u-textTruncate.u-inlineBlock
+                = link_to(user_path(user), class: "fullname") do
+                  = user.nickname
+            %span.screenname
+              = link_to(user_path(user), class: "ProfileCard-screennameLink") do
+                = "@" + user.name
+            %p.ProfileCard-bio
+              - if user.biography.length > 65 then
+                = user.biography[0..65] + "..."
+              - else
+                = user.biography
+
+

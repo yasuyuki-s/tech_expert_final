@@ -135,6 +135,11 @@ input{
     line-height: 20px;
     padding: 6px 16px;
   }
+  &--small{
+    font-size: 12px;
+    line-height: 16px;
+    padding: 4px 12px;
+  }
   &--primary{
     background-color: $color-EdgeButton-bg;
     border: 1px solid $color-EdgeButton-bg;
@@ -240,6 +245,14 @@ input{
   width: 66%;
 }
 
+.u-size1of2{
+  width: 50%;
+}
+
+.u-mb10{
+  margin-bottom: 10px;
+}
+
 .u-boxShadow{
   box-shadow: 0 1px 3px 0 rgba(0,0,0,0.25);
 }
@@ -250,6 +263,9 @@ input{
 
 .u-floatRight{
   float: right;
+}
+.u-floatLeft{
+  float: left;
 }
 
 .u-textCenter{
@@ -263,6 +279,14 @@ input{
 .u-inlineBlock{
   display: inline-block;
   max-width: 100%;
+}
+
+.u-textTruncate{
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  word-wrap: normal;
 }
 
 .Arrange{
@@ -286,3 +310,20 @@ input{
   }
 }
 
+.follow-button-wrapper{
+  .follow-button{
+    display: block;
+  }
+  .following-button{
+    display: none;
+  }
+}
+
+.following-button-wrapper{
+  .follow-button{
+    display: none;
+  }
+  .following-button{
+    display: block;
+  }
+}

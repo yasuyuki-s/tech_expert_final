@@ -1,10 +1,8 @@
 class TweetsController < ApplicationController
   before_action :set_tweets, only:[:create, :index]
 
-
   def index
     @tweet = Tweet.new
-    @tweets = current_user.tweets.order("created_at DESC")
   end
 
   def create
@@ -23,6 +21,16 @@ class TweetsController < ApplicationController
   end
 
   def set_tweets
-    @tweets = tweets = current_user.tweets.order("created_at DESC")
+    user_list = [current_user.id]
+    user_list.concat(current_user.follows.pluck(:id))
+
+    tweets = Tweet.arel_table
+
+    tweets_sel = tweets[:user_id].eq(user_list[0])
+
+    for i in 1..user_list.length-1
+       tweets_sel = tweets_sel.or(tweets[:user_id].eq(user_list[i]))
+    end
+    @tweets = Tweet.where(tweets_sel).includes(:user).order("created_at DESC")
   end
 end

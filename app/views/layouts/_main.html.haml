@@ -31,23 +31,50 @@
           .ProfileCardStats
             %ul.ProfileCardStats-statList.Arrange.Arrange--bottom.Arrange-equal
               %li.ProfileCardStats-stat.Arrange-sizeFit
-                %a.ProfileCardStats-statLink.u-textUserColor.u-linkClean.u-block{href:""}
+                = link_to(user_path(current_user), class: "ProfileCardStats-statLink u-textUserColor u-linkClean u-block") do
                   %span.ProfileCardStats-statLabel.u-block
                     ツイート
                   %span.ProfileCardStats-statValue
                     = current_user.tweets_count
               %li.ProfileCardStats-stat.Arrange-sizeFit
-                %a.ProfileCardStats-statLink.u-textUserColor.u-linkClean.u-block{href:""}
+                = link_to(following_user_path(current_user), class: "ProfileCardStats-statLink u-textUserColor u-linkClean u-block") do
                   %span.ProfileCardStats-statLabel.u-block
                     フォロー
-                  %span.ProfileCardStats-statValue
-                    50
+                  %span.ProfileCardStats-statValue#follows_count
+                    = current_user.follows_count
               %li.ProfileCardStats-stat.Arrange-sizeFit
-                %a.ProfileCardStats-statLink.u-textUserColor.u-linkClean.u-block{href:""}
+                = link_to(followers_user_path(current_user), class: "ProfileCardStats-statLink u-textUserColor u-linkClean u-block") do
                   %span.ProfileCardStats-statLabel.u-block
                     フォロワー
                   %span.ProfileCardStats-statValue
-                    25
+                    = current_user.followers_count
+      .module
+        .flex-module
+          .flex-module-header
+            %h3 ユーザーリスト
+          .DashboardUserList
+            %ol
+              - User.all.each do |user|
+                %li.DashboardUserList-item
+                  .content
+                    = link_to(user_path(user), class: "account-group", data_user_id: user.id) do
+                      - if user.image_avatar.present? then
+                        = image_tag(user.image_avatar.url, size: "48x48", class: "avatar")
+                      - else
+                        = image_tag("default_profile_normal.png",size: "48x48", class: "avatar")
+                      %span.account-group-inner
+                        %strong.fullname= user.nickname
+                        %span.username= "@" + user.name
+                    - if current_user != user then
+                      .user-actions
+                        %div{ class: current_user.following?(user) ? "following-button-wrapper" : "follow-button-wrapper"}
+                          = form_tag(follow_relationships_path, method: :post, class: "follow-button") do
+                            = hidden_field_tag :follow_to_id, user.id
+                            = submit_tag("フォローする", class: "EdgeButton EdgeButton--secondary EdgeButton--small")
+                          = form_tag(follow_relationships_path, method: :delete, class: "following-button") do
+                            = hidden_field_tag :follow_to_id, user.id
+                            = submit_tag("フォロー中", class: "EdgeButton EdgeButton--primary EdgeButton--small")
+
     .content-main.top-timeline-tweetbox
       .timeline-tweet-box
         .home-tweet-box
