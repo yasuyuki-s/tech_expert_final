@@ -5,12 +5,12 @@
         = link_to root_path do
           %i.fa.fa-twitter#blue
 .page-outer
-  - if alert == "Invalid Email or password."
+  - if alert.present?
     .alert-messages
       .message
         %a.close{href: ""}
           %i.fa.fa-times
-        %span.message-text 入力されたメールアドレスまたはパスワードに誤りがあります。再度お試しください。
+        %span.message-text= alert
   .page-container.wrapper.wrapper-signin
     .page-canvas.page-canvas-signin
       .signin-wrapper
