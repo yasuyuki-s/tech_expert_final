@@ -17,7 +17,7 @@ class TweetsController < ApplicationController
   private
 
   def tweet_params
-    params.require(:tweet).permit(:tweet)
+    params.require(:tweet).permit(:tweet,:image)
   end
 
   def set_tweets
