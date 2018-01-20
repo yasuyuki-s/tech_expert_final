@@ -182,6 +182,24 @@ input{
   }
 }
 
+.TweetBoxExtras{
+  flex-shrink: 0;
+  float: left;
+  &-item{
+    display: inline-block;
+    position: relative;
+    button{
+      color: $color-EdgeButton-bg;
+      background: inherit;
+      font-size: 20px;
+      border: 0;
+    }
+    input{
+      display: none;
+    }
+  }
+}
+
 
 .clearfix{
   &::after{
