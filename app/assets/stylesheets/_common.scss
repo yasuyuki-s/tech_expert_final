@@ -189,14 +189,19 @@ input{
     display: inline-block;
     position: relative;
     button{
-      color: $color-EdgeButton-bg;
+      color: $color-tweetbox-border;
       background: inherit;
       font-size: 20px;
       border: 0;
+      &.isActive{
+        color: $color-EdgeButton-bg;
+      }
     }
     input{
       display: none;
+
     }
+
   }
 }
 

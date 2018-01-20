@@ -10,4 +10,12 @@ $(document).on('turbolinks:load',function(){
     $("#tweet_image_modal").click();
   });
 
+  $("#tweet_image_modal").change(function(){
+    $("#tweet-image-choose-modal-button").toggleClass("isActive");
+  });
+
+  $("#tweet_image").change(function(){
+    $("#tweet-image-choose-button").toggleClass("isActive");
+  });
+
 });
