@@ -20,4 +20,9 @@
               .tweet-text-container
                 %p.tweettext
                   = simple_format(h(tweet.tweet))
+              .AdaptiveMediaOuterContainer
+                - if tweet.image.present? then
+                  = image_tag(tweet.image, class: "AdaptiveMedia is-square")
+
+
               .stream-item-footer

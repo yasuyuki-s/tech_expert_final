@@ -14,5 +14,10 @@
             .editor-container
               = f.text_area :tweet, autofocus: false, class: "editor", maxlength: "240", placeholder: "いまどうしてる？"
             .tweetboxtoolbar
+              .TweetBoxExtras
+                .TweetBoxExtras-item
+                  = f.file_field :image, autocomplete: "false",id: "tweet_image_modal"
+                  %button#tweet-image-choose-modal-button
+                    %i.fa.fa-picture-o
               .tweetboxtoolbar-tweetButton
                 = f.submit "ツイート", class: "EdgeButton EdgeButton--medium EdgeButton--primary2"
