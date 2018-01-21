@@ -16,6 +16,9 @@ class User < ApplicationRecord
   has_many :follows, through: :follow_active_relationships, source: :follow_to
   has_many :followers, through: :follow_passive_relationships, source: :follow_by
 
+  has_many :retweet_relationships, dependent: :destroy
+  has_many :retweets, through: :retweet_relationships, source: :tweet
+
   def to_param
     name
   end
