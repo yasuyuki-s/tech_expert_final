@@ -1,0 +1,2 @@
+class RetweetRelationship < ApplicationRecord
+end
