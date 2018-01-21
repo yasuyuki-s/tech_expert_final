@@ -4,6 +4,18 @@
       - @tweets.each do |tweet|
         %li.stream-item
           .tweet.clearfix
+            .context
+              - if tweet.retweeted_by?(@users) then
+              - retweeted_user = tweet.recent_retweeted_user(@users)
+                .tweet-context.with-icn
+                  %i.fa.fa-retweet
+                  %span
+                    =link_to(user_path(retweeted_user),class: "pretty-link") do
+                      - if retweeted_user == current_user then
+                        自分
+                      - else
+                        = retweeted_user.nickname
+                    がリツイート
             .content
               .stream-item-header
                 = link_to(user_path(tweet.user), class: "account-group") do

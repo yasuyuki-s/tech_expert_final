@@ -751,6 +751,31 @@
         &:hover{
           background: $color-stream-bg2;
         }
+        .context{
+          margin-left: 58px;
+          .with-icn{
+            margin-left: -24px;
+            i{
+              display: inline-block;
+              font-size: 14px;
+              margin: 0 6px 0 0;
+            }
+          }
+          .tweet-context{
+            color: $color-main-font2;
+            font-size: 12px;
+            margin-top: -3px;
+            margin-bottom: 3px;
+            .pretty-link{
+              color: inherit;
+              text-decoration: none;
+              &:hover{
+                text-decoration: underline;
+                color: $color-main-font3;
+              }
+            }
+          }
+        }
         .content{
           margin-left: 58px;
           .stream-item-header{
