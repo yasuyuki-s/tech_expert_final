@@ -20,5 +20,11 @@ Rails.application.routes.draw do
       delete :destroy
     end
   end
+
+  resources :retweet_relationships, only: [:create] do
+    collection do
+      delete :destroy
+    end
+  end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
