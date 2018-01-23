@@ -35,4 +35,15 @@ class User < ApplicationRecord
     follows.include?(other_user)
   end
 
+  def retweet!(tweet)
+    retweet_relationships.create!(tweet_id: tweet.id)
+  end
+
+  def unretweet!(tweet)
+    retweet_relationships.find_by(tweet_id: tweet.id).destroy
+  end
+
+  def retweeting?(tweet)
+    retweets.include?(tweet)
+  end
 end
