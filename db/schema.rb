@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180121071606) do
+ActiveRecord::Schema.define(version: 20180123143047) do
 
   create_table "follow_relationships", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "follow_by_id", null: false
@@ -31,11 +31,12 @@ ActiveRecord::Schema.define(version: 20180121071606) do
   end
 
   create_table "tweets", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.text     "tweet",      limit: 65535
+    t.text     "tweet",         limit: 65535
     t.string   "image"
-    t.integer  "user_id",                  null: false
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
+    t.integer  "user_id",                                 null: false
+    t.datetime "created_at",                              null: false
+    t.datetime "updated_at",                              null: false
+    t.integer  "retweet_count",               default: 0, null: false
     t.index ["user_id"], name: "index_tweets_on_user_id", using: :btree
   end
 
