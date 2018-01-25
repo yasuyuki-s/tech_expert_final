@@ -5,8 +5,8 @@
         %li.stream-item
           .tweet.clearfix
             .context
-              - if tweet.retweeted_by?(@users) then
-              - retweeted_user = tweet.recent_retweeted_user(@users)
+              - if tweet.retweeted_by?(@retweeters_id) then
+              - retweeted_user = tweet.recent_retweeted_user(@retweeters_id)
                 .tweet-context.with-icn
                   %i.fa.fa-retweet
                   %span
@@ -35,6 +35,15 @@
               .AdaptiveMediaOuterContainer
                 - if tweet.image.present? then
                   = image_tag(tweet.image, class: "AdaptiveMedia is-square")
-
-
               .stream-item-footer
+                .ProfileTweet-actionList
+                  %div{ class: current_user.retweeting?(tweet) ? "ProfileTweet-action ProfileTweet-action--retweeting" : "ProfileTweet-action ProfileTweet-action--retweet"}
+                    = hidden_field_tag :tweet_id, tweet.id
+                    %button.ProfileTweet-actionButton.retweet
+                      .Iconcontainer
+                        %i.fa.fa-retweet
+                      %span.ProfileTweet-actionCount
+                        = tweet.retweet_count
+
+
+
