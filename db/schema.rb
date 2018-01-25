@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180123143047) do
+ActiveRecord::Schema.define(version: 20180124140802) do
 
   create_table "follow_relationships", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "follow_by_id", null: false
@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(version: 20180123143047) do
     t.integer  "user_id",    null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["tweet_id", "user_id"], name: "index_retweet_relationships_on_tweet_id_and_user_id", unique: true, using: :btree
     t.index ["tweet_id"], name: "index_retweet_relationships_on_tweet_id", using: :btree
     t.index ["user_id"], name: "index_retweet_relationships_on_user_id", using: :btree
   end
