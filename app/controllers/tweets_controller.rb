@@ -62,8 +62,8 @@ class TweetsController < ApplicationController
        tweets_sel = tweets_sel.or(tweets[:user_id].eq(user_list[i]))
        users_sel = users_sel.or(users[:id].eq(user_list[i]))
     end
-    @tweets = Tweet.where(tweets_sel).includes(:user,:users_retweeted_by).eager_load(:retweet_relationships).order(order_sel)
-    @users = User.where(users_sel)
+    @tweets = Tweet.where(tweets_sel).includes(:user).eager_load(:retweet_relationships).order(order_sel)
+    @retweeters_id = user_list
   end
 
 

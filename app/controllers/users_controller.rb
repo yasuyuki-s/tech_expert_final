@@ -56,10 +56,10 @@ class UsersController < ApplicationController
 
     order_sel = "CASE when retweet_relationships.user_id = #{@user.id} then retweet_relationships.created_at else tweets.created_at end DESC"
 
-    @tweets = Tweet.where(tweets_sel).includes(:user,:users_retweeted_by).eager_load(:retweet_relationships).order(order_sel)
+    @tweets = Tweet.where(tweets_sel).includes(:user).eager_load(:retweet_relationships).order(order_sel)
     @tweet = Tweet.new
-    @users = []
-    @users[0] = @user
+    @retweeters_id = []
+    @retweeters_id[0] = @user.id
   end
 
 end
