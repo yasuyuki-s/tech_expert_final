@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180120074700) do
+ActiveRecord::Schema.define(version: 20180124140802) do
 
   create_table "follow_relationships", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "follow_by_id", null: false
@@ -21,12 +21,23 @@ ActiveRecord::Schema.define(version: 20180120074700) do
     t.index ["follow_to_id"], name: "fk_rails_eee919fa10", using: :btree
   end
 
+  create_table "retweet_relationships", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "tweet_id",   null: false
+    t.integer  "user_id",    null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["tweet_id", "user_id"], name: "index_retweet_relationships_on_tweet_id_and_user_id", unique: true, using: :btree
+    t.index ["tweet_id"], name: "index_retweet_relationships_on_tweet_id", using: :btree
+    t.index ["user_id"], name: "index_retweet_relationships_on_user_id", using: :btree
+  end
+
   create_table "tweets", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.text     "tweet",      limit: 65535
+    t.text     "tweet",         limit: 65535
     t.string   "image"
-    t.integer  "user_id",                  null: false
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
+    t.integer  "user_id",                                 null: false
+    t.datetime "created_at",                              null: false
+    t.datetime "updated_at",                              null: false
+    t.integer  "retweet_count",               default: 0, null: false
     t.index ["user_id"], name: "index_tweets_on_user_id", using: :btree
   end
 
@@ -55,5 +66,7 @@ ActiveRecord::Schema.define(version: 20180120074700) do
 
   add_foreign_key "follow_relationships", "users", column: "follow_by_id"
   add_foreign_key "follow_relationships", "users", column: "follow_to_id"
+  add_foreign_key "retweet_relationships", "tweets"
+  add_foreign_key "retweet_relationships", "users"
   add_foreign_key "tweets", "users"
 end

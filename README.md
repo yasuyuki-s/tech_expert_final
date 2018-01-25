@@ -21,12 +21,12 @@
 - has_many :follows, through: :follow_active_relationships, source: :follow_to
 - has_many :followers, through: :follow_passive_relationships, source: :follow_by
 - has_many :tweets, dependent: :destroy
+- has_many :retweet_relationships, dependent: :destroy
+- has_many :retweets, through: :retweet_relationships, source: :tweet
 
 以下は未実装
 - has_many :like_relationships, dependent: :destroy
 - has_many :tweets_likes_to, through: :like_relationships, source: :tweet
-- has_many :retweet_relationships, dependent: :destroy
-- has_many :tweets_retweets_to, through: :retweet_relationships, source: :tweet
 
 ## tweetsテーブル
 
@@ -35,10 +35,14 @@
 |tweet|text|null: false, index: true|
 |image|string||
 |user_id|integer|null: false, foreign_key: true|
+|retweet_count|integer|null: false|
 
 ### Association
 
 - belongs_to :user
+- has_many :retweet_relationships, dependent: :destroy
+- has_many :users_retweeted_by, through: :retweet_relationships, source: :user
+
 - counter_culture :user
 
 以下未実装
@@ -49,8 +53,7 @@
 - has_many :tweets_replyed_by, through: :tweet_replyed, source: :reply_by_tweet
 - has_many :like_relationships, dependent: :destroy
 - has_many :users_liked_by, through: :like_relationships, source: :user
-- has_many :retweet_relationships, dependent: :destroy
-- has_many :users_retweeted_by, through: :retweet_relationships, source: :user
+
 
 ## follow_relationshipsテーブル
 
@@ -90,7 +93,7 @@
 - belongs_to :tweet
 - belongs_to :user
 
-## retweet_relationshipsテーブル　未実装
+## retweet_relationshipsテーブル
 
 |Column|Type|Options|
 |------|----|-------|
@@ -100,3 +103,5 @@
 ### Association
 - belongs_to :tweet
 - belongs_to :user
+
+- counter_culture :tweet, column_name: "retweet_count"

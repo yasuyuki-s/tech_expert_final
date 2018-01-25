@@ -4,6 +4,18 @@
       - @tweets.each do |tweet|
         %li.stream-item
           .tweet.clearfix
+            .context
+              - if tweet.retweeted_by?(@retweeters_id) then
+              - retweeted_user = tweet.recent_retweeted_user(@retweeters_id)
+                .tweet-context.with-icn
+                  %i.fa.fa-retweet
+                  %span
+                    =link_to(user_path(retweeted_user),class: "pretty-link") do
+                      - if retweeted_user == current_user then
+                        自分
+                      - else
+                        = retweeted_user.nickname
+                    がリツイート
             .content
               .stream-item-header
                 = link_to(user_path(tweet.user), class: "account-group") do
@@ -23,6 +35,15 @@
               .AdaptiveMediaOuterContainer
                 - if tweet.image.present? then
                   = image_tag(tweet.image, class: "AdaptiveMedia is-square")
-
-
               .stream-item-footer
+                .ProfileTweet-actionList
+                  %div{ class: current_user.retweeting?(tweet) ? "ProfileTweet-action ProfileTweet-action--retweeting" : "ProfileTweet-action ProfileTweet-action--retweet"}
+                    = hidden_field_tag :tweet_id, tweet.id
+                    %button.ProfileTweet-actionButton.retweet
+                      .Iconcontainer
+                        %i.fa.fa-retweet
+                      %span.ProfileTweet-actionCount
+                        = tweet.retweet_count
+
+
+
