@@ -1,6 +1,6 @@
 $(document).on('turbolinks:load',function(){
 
-  $(".ProfileTweet-actionButton").on("click", function(e){
+  $(".ProfileTweet-actionButton.retweet").on("click", function(e){
     e.preventDefault();
     parent_wrapper = $(this).closest(".ProfileTweet-action");
     retweet_count = $(this).children("span");
