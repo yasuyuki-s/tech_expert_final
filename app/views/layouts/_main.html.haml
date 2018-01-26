@@ -6,6 +6,12 @@
           %i.fa.fa-times
         - @tweet.errors.full_messages.each do |msg|
           %span.message-text= msg
+  -if notice
+    .alert-messages
+      .message
+        %a.close{href: ""}
+          %i.fa.fa-times
+        %span.message-text= notice
   #page-container.AppContent.clearfix
     .dashboard
       .DashboardProfileCard
