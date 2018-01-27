@@ -113,11 +113,21 @@
     line-height: 1;
     padding: 15px 15px 12px;
   }
+  &-toggleLink{
+    color: $color-main-font3;
+    text-decoration: none;
+    :hover{
+      text-decoration: underline;
+    }
+  }
   .isActive{
     color: $color-main-font1;
     cursor: default;
     font-weight: bold;
     text-decoration: none;
+    :hover{
+      text-decoration: none;
+    }
   }
 }
 
