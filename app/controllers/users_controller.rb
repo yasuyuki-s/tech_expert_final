@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only:[:show, :update, :following, :followers]
+  before_action :set_user, only:[:show, :update, :following, :followers, :activities]
 
   def show
     retweet_list = @user.retweets.pluck(:id)
@@ -23,6 +23,10 @@ class UsersController < ApplicationController
 
   def followers
     @users = User.find_by(name: params[:name]).followers
+  end
+
+  def activities
+
   end
 
   def update
