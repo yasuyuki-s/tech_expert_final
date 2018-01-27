@@ -44,6 +44,7 @@ gem "mini_magick"
 gem "fog"
 gem 'rails-i18n'
 gem 'counter_culture'
+gem 'lazy_high_charts'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
