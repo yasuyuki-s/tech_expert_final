@@ -112,6 +112,10 @@
                       = link_to(followers_user_path(@user), class: "ProfileNav-stat u-textCenter") do
                         %span.ProfileNav-label フォロワー
                         %span.ProfileNav-value#followers_count= @user.followers_count
+                    %li{ class: (page == "activities") ? "ProfileNav-item ProfileNav-item--activities isActive" : "ProfileNav-item ProfileNav-item--activities"}
+                      = link_to(activities_user_path(@user), class: "ProfileNav-stat u-textCenter ProfileNav-stat--activities") do
+                        %span.ProfileNav-value.activities
+                          アクティビティ
                     %li.ProfileNav-item.ProfileNav-item--userActions.u-floatRight.u-textRight
                       .UserActions
                         - if user_signed_in? && current_user.id == @user.id
@@ -166,5 +170,7 @@
                 .ProfileTimeline#timeline
                   - if page == "tweet" then
                     = render "layouts/tweets_stream"
+                  - elsif page == "activities" then
+                    = render "layouts/activities"
                   - else
                     = render "layouts/mypage_user_list"

@@ -353,6 +353,12 @@
             color: $color-main-font3;
           }
         }
+        &--activities{
+          position: absolute;
+          padding-top: 20px;
+          padding-bottom: 2px;
+          top: 0;
+        }
         text-decoration: none;
         height: 60px;
         box-sizing: border-box;
@@ -375,6 +381,9 @@
         font-weight: bold;
         padding-top: 3px;
         transition: color .15s ease-in-out;
+        &.activities{
+          font-size: 15px;
+        }
       }
       .isActive{
         a{
