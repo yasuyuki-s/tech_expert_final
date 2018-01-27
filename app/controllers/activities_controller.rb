@@ -25,23 +25,38 @@ class ActivitiesController < ApplicationController
   def set_graph(userlist)
     data_table_day = []
     data_table_date = []
+    data_table_period = []
 
     userlist.each_with_index do |user,index|
       a_table_day = []
       a_table_date = []
+      a_table_period = []
       for i in 0..6
         a_table_day[i] = 0
+      end
+      for i in 0..5
+        a_table_period[i] = 0
       end
       for i in 0..30
         data_range = (30-i).day.ago.all_day
         a_data_date = []
         a_data_date[0] = Date.today.advance(days: -30+i).to_datetime
-        a_data_date[1] = user.tweets.where(created_at: data_range).count
+        tweets = user.tweets.where(created_at: data_range)
+        a_data_date[1] = 0
+        tweets.each do |tweet|
+          a_data_date[1] += 1
+          for j in 0..5
+            if tweet.created_at_between_hour?(j*4,(j+1)*4) then
+              a_table_period[j] += 1
+            end
+          end
+        end
         a_table_date << a_data_date
         a_table_day[(30-i).day.ago.wday] += a_data_date[1]
       end
       data_table_date << a_table_date
       data_table_day << a_table_day
+      data_table_period << a_table_period
     end
 
     @graph_data_date = LazyHighCharts::HighChart.new('graph') do |f|
@@ -92,6 +107,24 @@ class ActivitiesController < ApplicationController
       f.yAxis(title: {text: "ツイート数"}, allowDecimals: false, min: 0)
       userlist.each_with_index do |user,index|
         f.series(name: "#{user.nickname}のツイート数", data: data_table_day[index])
+      end
+    end
+
+    @graph_data_period = LazyHighCharts::HighChart.new('graph') do |f|
+      f.title(text: "時間帯別")
+      f.chart(type: "spline")
+      f.global(useUTC: false)
+      f.xAxis(categories: [
+            '0:00~4:00',
+            '4:00~8:00',
+            '8:00~12:00',
+            '12:00~16:00',
+            '16:00~20:00',
+            '20:00~24:00',
+        ])
+      f.yAxis(title: {text: "ツイート数"}, allowDecimals: false, min: 0)
+      userlist.each_with_index do |user,index|
+        f.series(name: "#{user.nickname}のツイート数", data: data_table_period[index])
       end
     end
 
