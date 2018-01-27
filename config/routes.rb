@@ -10,7 +10,12 @@ Rails.application.routes.draw do
     member do
       get :following
       get :followers
-      get :activities
+    end
+    resources :activities, only:[:index] do
+      collection do
+        get :following
+        get :followers
+      end
     end
   end
 
