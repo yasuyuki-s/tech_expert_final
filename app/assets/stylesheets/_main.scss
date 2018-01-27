@@ -113,12 +113,28 @@
     line-height: 1;
     padding: 15px 15px 12px;
   }
+  &-toggleLink{
+    color: $color-main-font3;
+    text-decoration: none;
+    :hover{
+      text-decoration: underline;
+    }
+  }
   .isActive{
     color: $color-main-font1;
     cursor: default;
     font-weight: bold;
     text-decoration: none;
+    :hover{
+      text-decoration: none;
+    }
   }
+}
+
+.activities-container{
+  width: 100%;
+  background-color: $color-stream-bg;
+  border: 1px solid $color-textarea-border;
 }
 
 .AppContent{
@@ -353,6 +369,12 @@
             color: $color-main-font3;
           }
         }
+        &--activities{
+          position: absolute;
+          padding-top: 20px;
+          padding-bottom: 2px;
+          top: 0;
+        }
         text-decoration: none;
         height: 60px;
         box-sizing: border-box;
@@ -375,6 +397,9 @@
         font-weight: bold;
         padding-top: 3px;
         transition: color .15s ease-in-out;
+        &.activities{
+          font-size: 15px;
+        }
       }
       .isActive{
         a{

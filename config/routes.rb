@@ -11,6 +11,12 @@ Rails.application.routes.draw do
       get :following
       get :followers
     end
+    resources :activities, only:[:index] do
+      collection do
+        get :following
+        get :followers
+      end
+    end
   end
 
   resources :tweets, only: [:index,:create,:destroy]

@@ -112,6 +112,10 @@
                       = link_to(followers_user_path(@user), class: "ProfileNav-stat u-textCenter") do
                         %span.ProfileNav-label フォロワー
                         %span.ProfileNav-value#followers_count= @user.followers_count
+                    %li{ class: (page == "activities") ? "ProfileNav-item ProfileNav-item--activities isActive" : "ProfileNav-item ProfileNav-item--activities"}
+                      = link_to(user_activities_path(@user), class: "ProfileNav-stat u-textCenter ProfileNav-stat--activities") do
+                        %span.ProfileNav-value.activities
+                          アクティビティ
                     %li.ProfileNav-item.ProfileNav-item--userActions.u-floatRight.u-textRight
                       .UserActions
                         - if user_signed_in? && current_user.id == @user.id
@@ -163,8 +167,21 @@
                       %ul.ProfileHeading-toggle
                         %li.ProfileHeading-toggleItem.is-active
                           %span ツイート
+                    - if page == "activities" then
+                      %ul.ProfileHeading-toggle
+                        %li.ProfileHeading-toggleItem
+                          = link_to(user_activities_path(@user), class: page2 == "user" ? "ProfileHeading-toggleLink isActive" : "ProfileHeading-toggleLink") do
+                            %span ユーザー
+                        %li.ProfileHeading-toggleItem
+                          = link_to(following_user_activities_path(@user), class: page2 == "following" ? "ProfileHeading-toggleLink isActive" : "ProfileHeading-toggleLink") do
+                            %span フォロー
+                        %li.ProfileHeading-toggleItem
+                          = link_to(followers_user_activities_path(@user), class: page2 == "followers" ? "ProfileHeading-toggleLink isActive" : "ProfileHeading-toggleLink") do
+                            %span フォロワー
                 .ProfileTimeline#timeline
                   - if page == "tweet" then
                     = render "layouts/tweets_stream"
+                  - elsif page == "activities" then
+                    = render "layouts/activities"
                   - else
                     = render "layouts/mypage_user_list"

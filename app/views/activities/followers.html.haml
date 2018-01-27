@@ -1,0 +1,14 @@
+.global-nav
+  .container
+    .ProfilePage-editingOverlay
+    %i.fa.fa-twitter.center
+    %ul.nav--global-actions
+      %li#global-nav-home
+        = link_to root_path do
+          %i.fa.fa-home
+          %span.text ホーム
+    = render "layouts/topbar_right_items"
+.page-outer
+  = render "layouts/mypage", page: "activities", page2: "followers"
+= render "layouts/tweetstorm_modal"
+

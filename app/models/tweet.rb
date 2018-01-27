@@ -7,6 +7,14 @@ class Tweet < ApplicationRecord
 
   mount_uploader :image, TweetImageUploader
 
+  def created_at_between_hour?(from,to)
+    if created_at.hour >= from and created_at.hour < to then
+      return true
+    else
+      return false
+    end
+  end
+
   def retweeted_by?(user_id_list)
     value = false
 
