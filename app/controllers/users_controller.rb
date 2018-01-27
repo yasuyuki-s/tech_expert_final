@@ -2,7 +2,19 @@ class UsersController < ApplicationController
   before_action :set_user, only:[:show, :update, :following, :followers]
 
   def show
+    retweet_list = @user.retweets.pluck(:id)
 
+    tweets = Tweet.arel_table
+    tweets_sel = tweets[:user_id].eq(@user.id)
+    for i in 0..retweet_list.length-1
+      tweets_sel = tweets_sel.or(tweets[:id].eq(retweet_list[i]))
+    end
+
+    order_sel = "CASE when retweet_relationships.user_id = #{@user.id} then retweet_relationships.created_at else tweets.created_at end DESC"
+
+    @tweets = Tweet.where(tweets_sel).includes(:user).eager_load(:retweet_relationships).order(order_sel)
+    @retweeters_id = []
+    @retweeters_id[0] = @user.id
   end
 
   def following
@@ -45,21 +57,7 @@ class UsersController < ApplicationController
 
   def set_user
     @user = User.find_by(name: params[:name])
-
-    retweet_list = @user.retweets.pluck(:id)
-
-    tweets = Tweet.arel_table
-    tweets_sel = tweets[:user_id].eq(@user.id)
-    for i in 0..retweet_list.length-1
-      tweets_sel = tweets_sel.or(tweets[:id].eq(retweet_list[i]))
-    end
-
-    order_sel = "CASE when retweet_relationships.user_id = #{@user.id} then retweet_relationships.created_at else tweets.created_at end DESC"
-
-    @tweets = Tweet.where(tweets_sel).includes(:user).eager_load(:retweet_relationships).order(order_sel)
     @tweet = Tweet.new
-    @retweeters_id = []
-    @retweeters_id[0] = @user.id
   end
 
 end
