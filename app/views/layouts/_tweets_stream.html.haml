@@ -46,10 +46,10 @@
                         = tweet.retweet_count
                   - if tweet.user.id == current_user.id then
                     .ProfileTweet-action
-                      = form_tag(tweet_path(tweet), method: :delete) do
-                        %button.ProfileTweet-actionButton.delete
-                          .Iconcontainer
-                            %i.fa.fa-trash
+                      = hidden_field_tag :tweet_id, tweet.id
+                      %button.ProfileTweet-actionButton.delete
+                        .Iconcontainer
+                          %i.fa.fa-trash
 
 
 

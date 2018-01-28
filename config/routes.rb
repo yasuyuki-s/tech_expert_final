@@ -19,7 +19,11 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :tweets, only: [:index,:create,:destroy]
+  resources :tweets, only: [:index,:create] do
+    collection do
+      delete :destroy
+    end
+  end
 
   resources :follow_relationships, only: [:create] do
     collection do
