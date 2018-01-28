@@ -17,7 +17,6 @@ $(document).on('turbolinks:load',function(){
     })
     .done(function(data){
       retweet_count.text(data.retweet_count);
-      console.log(data.retweet_count);
       parent_wrapper.toggleClass("ProfileTweet-action--retweet");
       parent_wrapper.toggleClass("ProfileTweet-action--retweeting");
     })

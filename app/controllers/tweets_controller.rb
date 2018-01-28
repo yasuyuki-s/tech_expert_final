@@ -15,10 +15,13 @@ class TweetsController < ApplicationController
   end
 
   def destroy
-    @tweet = Tweet.find(params[:id])
+    @tweet = Tweet.find(params[:tweet_id])
     if @tweet.user.id == current_user.id then
       @tweet.destroy
-      redirect_to root_path, notice: "ツイートを削除しました"
+      respond_to do |format|
+        format.json { render json: { redirect: root_path }}
+
+      end
     end
   end
 
